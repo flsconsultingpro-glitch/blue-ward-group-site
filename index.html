@@ -345,124 +345,155 @@
     .stat-title { font-size: 16px; margin-bottom: 8px; }
     .stat p { color: var(--text-sec); font-size: 14px; }
 
-    .presence-header {
+    .section-map {
+      padding: 120px 0 80px;
+      background: #0d1117;
+    }
+    .section-map .section-map-head {
       text-align: center;
       max-width: 720px;
-      margin: 0 auto 48px;
+      margin: 0 auto 40px;
     }
-    .presence-header .label { margin-bottom: 12px; }
-    .presence-header h2 { margin-bottom: 16px; }
-    .presence-intro {
+    .section-map .section-label {
+      display: block;
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .section-map .section-map-head h2 { margin-bottom: 16px; }
+    .section-map .section-intro {
       color: var(--text-sec);
       font-size: 16px;
       font-weight: 300;
       line-height: 1.65;
       margin: 0 auto;
     }
-    .presence-map-wrap {
-      border: 1px solid var(--border);
-      background: var(--surface);
+    .map-wrapper {
       position: relative;
+      width: 100%;
+      max-width: 1400px;
+      margin: 48px auto 32px;
       overflow: hidden;
-      aspect-ratio: 2 / 1;
-      max-height: 520px;
+      border-top: 0.5px solid #1e2530;
+      border-bottom: 0.5px solid #1e2530;
     }
-    .presence-map-bg {
-      position: absolute;
-      inset: 0;
-      background-color: #0d1117;
-      background-image: url("assets/world-map-lines.svg");
-      background-size: cover;
-      background-position: center;
+    #world-map {
+      width: 100%;
+      height: 520px;
+      cursor: grab;
+      background: #0d1117;
+    }
+    #world-map:active { cursor: grabbing; }
+    #world-map svg { display: block; width: 100%; height: 100%; }
+    .country {
+      fill: #1a2235;
+      stroke: #252e40;
+      stroke-width: 0.5px;
+      transition: fill 0.2s ease;
+    }
+    .country:hover { fill: #1e2d45; }
+    .country.country--active { fill: #1e2d45; }
+    .intervention-point { cursor: pointer; }
+    .intervention-point .dot {
+      fill: #c4922a;
       opacity: 0.95;
+      transition: r 0.2s ease;
     }
-    .presence-map-bg::after {
-      content: "";
+    .intervention-point:hover .dot { r: 6px; }
+    .intervention-point .pulse {
+      fill: none;
+      stroke: #c4922a;
+      stroke-width: 1.5px;
+      opacity: 0.85;
+      animation: pulse-ring 2.5s ease-out infinite;
+    }
+    @keyframes pulse-ring {
+      0% { r: 4px; opacity: 0.85; }
+      100% { r: 18px; opacity: 0; }
+    }
+    .map-tooltip {
       position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 75% 65% at 50% 45%, rgba(22, 28, 36, 0.2) 0%, rgba(13, 17, 23, 0.75) 100%);
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      background: #161c24;
+      border-left: 2px solid #c4922a;
+      padding: 10px 14px;
       pointer-events: none;
-    }
-    .presence-map {
-      position: absolute;
-      inset: 0;
-    }
-    .map-pin {
-      position: absolute;
-      width: 9px;
-      height: 9px;
-      margin: 0;
-      padding: 0;
-      border: none;
-      border-radius: 50%;
-      background: var(--gold);
-      cursor: default;
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      animation: pinBlink 2.4s ease-in-out infinite;
-      box-shadow: 0 0 0 0 rgba(196, 146, 42, 0.45);
-    }
-    .map-pin:focus {
-      outline: 1px solid var(--gold-light);
-      outline-offset: 3px;
-    }
-    .map-pin::after {
-      content: attr(data-label);
-      position: absolute;
-      left: 50%;
-      bottom: calc(100% + 6px);
-      transform: translateX(-50%);
-      white-space: nowrap;
-      font-size: 9px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-sec);
-      opacity: 0;
+      min-width: 200px;
+      max-width: 280px;
+      z-index: 20;
       transition: opacity 0.2s ease;
-      pointer-events: none;
     }
-    @media (hover: hover) {
-      .map-pin:hover::after { opacity: 1; }
+    .map-tooltip.visible { display: flex; opacity: 1; }
+    .tooltip-city {
+      font-family: "DM Sans", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #c4922a;
     }
-    @keyframes pinBlink {
-      0%, 100% {
-        opacity: 0.35;
-        box-shadow: 0 0 0 0 rgba(196, 146, 42, 0);
-        transform: translate(-50%, -50%) scale(1);
-      }
-      50% {
-        opacity: 1;
-        box-shadow: 0 0 14px 5px rgba(196, 146, 42, 0.35);
-        transform: translate(-50%, -50%) scale(1.2);
-      }
+    .tooltip-country { display: none; }
+    .tooltip-label {
+      font-family: "DM Sans", sans-serif;
+      font-size: 12px;
+      color: #7a8494;
+      line-height: 1.4;
     }
-    .presence-legend {
+    .tooltip-missions {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 17px;
+      font-weight: 300;
+      color: #e2e6ee;
+      margin-top: 2px;
+    }
+    .map-controls {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      z-index: 15;
+    }
+    .map-controls button {
+      width: 32px;
+      height: 32px;
+      background: #161c24;
+      border: 0.5px solid #1e2530;
+      color: #7a8494;
+      font-size: 16px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s, border-color 0.2s;
+      font-family: "DM Sans", sans-serif;
+    }
+    .map-controls button:hover {
+      color: #c4922a;
+      border-color: #c4922a;
+    }
+    .map-footer {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px 18px;
+      gap: 24px 48px;
       justify-content: center;
-      margin-top: 28px;
-      padding: 0;
-      list-style: none;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .presence-legend li {
-      font-size: 12px;
-      color: var(--text-sec);
+      padding: 36px 0 0;
+      font-family: "DM Sans", sans-serif;
+      font-size: 13px;
+      color: #7a8494;
       letter-spacing: 0.04em;
     }
-    .presence-legend li::before {
-      content: "";
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--gold);
-      margin-right: 8px;
-      vertical-align: middle;
-      opacity: 0.85;
+    .map-footer strong {
+      color: #c4922a;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 22px;
+      font-weight: 300;
+      margin-right: 6px;
     }
     .sr-only {
       position: absolute;
@@ -656,7 +687,8 @@
       .desktop-links, .cta { display: none; }
       .burger { display: inline-flex; }
       .about-grid, .entities-grid, .recruit-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; }
-      .presence-map-wrap { aspect-ratio: 4 / 3; max-height: none; min-height: 280px; }
+      #world-map { height: 280px; }
+      .map-footer { flex-direction: column; align-items: center; gap: 16px; text-align: center; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .about-media { min-height: 360px; }
       .hero p.hero-lead { font-size: 16px; }
@@ -671,7 +703,7 @@
         <a href="#groupe">Le Groupe</a>
         <a href="#entites">Filiales</a>
         <a href="#expertise">Expertise</a>
-        <a href="#presence">Présence</a>
+        <a href="#zones">Zones</a>
         <a href="#recrutement">Recrutement</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -685,7 +717,7 @@
       <a href="#groupe">Le Groupe</a>
       <a href="#entites">Filiales</a>
       <a href="#expertise">Expertise</a>
-      <a href="#presence">Présence</a>
+      <a href="#zones">Zones</a>
       <a href="#recrutement">Recrutement</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -782,58 +814,34 @@
     </div>
   </section>
 
-  <section class="section reveal" id="presence">
-    <div class="container">
-      <header class="presence-header">
-        <p class="label">Présence globale</p>
-        <h2>Une couverture mondiale, une expertise locale</h2>
-        <p class="presence-intro">
-          Zones d'intervention et de coordination. Les repères indiquent un déploiement ou un relais opérationnel.
-        </p>
-      </header>
-      <div class="presence-map-wrap">
-        <div class="presence-map-bg" aria-hidden="true"></div>
-        <div class="presence-map" role="group" aria-label="Points d'intervention sur la carte">
-          <!-- Positions : projection équirectangulaire (lon/lat → %) -->
-          <button type="button" class="map-pin" style="left:50.65%; top:22.86%; animation-delay:0s" data-label="Paris" aria-label="Paris, France"></button>
-          <button type="button" class="map-pin" style="left:52.02%; top:25.72%; animation-delay:0.15s" data-label="Nice" aria-label="Nice, France"></button>
-          <button type="button" class="map-pin" style="left:53.1%; top:25.4%; animation-delay:0.3s" data-label="Monaco" aria-label="Monaco"></button>
-          <button type="button" class="map-pin" style="left:58.48%; top:21.97%; animation-delay:0.45s" data-label="Ukraine" aria-label="Ukraine (Kyiv)"></button>
-          <button type="button" class="map-pin" style="left:49.97%; top:21.38%; animation-delay:0.6s" data-label="Londres" aria-label="Londres, Royaume-Uni"></button>
-          <button type="button" class="map-pin" style="left:50.6%; top:27.01%; animation-delay:0.75s" data-label="Barcelone" aria-label="Barcelone, Espagne"></button>
-          <button type="button" class="map-pin" style="left:53.47%; top:26.72%; animation-delay:0.9s" data-label="Rome" aria-label="Rome, Italie"></button>
-          <button type="button" class="map-pin" style="left:53.72%; top:20.82%; animation-delay:1.05s" data-label="Berlin" aria-label="Berlin, Allemagne"></button>
-          <button type="button" class="map-pin" style="left:51.71%; top:24.33%; animation-delay:1.2s" data-label="Genève" aria-label="Genève, Suisse"></button>
-          <button type="button" class="map-pin" style="left:45.39%; top:31.35%; animation-delay:1.35s" data-label="Casablanca" aria-label="Casablanca, Maroc"></button>
-          <button type="button" class="map-pin" style="left:59.66%; top:32.17%; animation-delay:1.5s" data-label="Tel Aviv" aria-label="Tel Aviv, Israël"></button>
-          <button type="button" class="map-pin" style="left:48.89%; top:49.24%; animation-delay:1.65s" data-label="Côte d'Ivoire" aria-label="Côte d'Ivoire (Abidjan)"></button>
-          <button type="button" class="map-pin" style="left:45.15%; top:42.38%; animation-delay:1.8s" data-label="Sénégal" aria-label="Sénégal (Dakar)"></button>
-          <button type="button" class="map-pin" style="left:27.72%; top:35.69%; animation-delay:1.95s" data-label="Miami" aria-label="Miami, États-Unis"></button>
-          <button type="button" class="map-pin" style="left:29.44%; top:27.38%; animation-delay:2.1s" data-label="New York" aria-label="New York, États-Unis"></button>
-          <button type="button" class="map-pin" style="left:22.46%; top:39.2%; animation-delay:2.25s" data-label="Mexico" aria-label="Mexico (Mexico City)"></button>
-        </div>
-      </div>
-      <p class="sr-only">
-        Paris, Nice, Monaco, Ukraine, Londres, Barcelone, Rome, Berlin, Genève, Casablanca, Tel Aviv, Côte d'Ivoire, Sénégal, Miami, New York, Mexico.
+  <section id="zones" class="section-map section reveal">
+    <div class="container section-map-head">
+      <span class="section-label">Zones d'intervention</span>
+      <h2>Une présence opérationnelle mondiale</h2>
+      <p class="section-intro">
+        Le groupe déploie ses équipes dans plus de 30 pays, sur demande ou dans le cadre de missions récurrentes.
+        Chaque déploiement fait l'objet d'une évaluation préalable du contexte local.
       </p>
-      <ul class="presence-legend">
-        <li>Paris</li>
-        <li>Nice</li>
-        <li>Monaco</li>
-        <li>Ukraine</li>
-        <li>Londres</li>
-        <li>Barcelone</li>
-        <li>Rome</li>
-        <li>Berlin</li>
-        <li>Genève</li>
-        <li>Casablanca</li>
-        <li>Tel Aviv</li>
-        <li>Côte d'Ivoire</li>
-        <li>Sénégal</li>
-        <li>Miami</li>
-        <li>New York</li>
-        <li>Mexico (Mexico)</li>
-      </ul>
+    </div>
+    <div class="map-wrapper">
+      <div id="world-map" role="img" aria-label="Carte du monde des zones d'intervention"></div>
+      <div class="map-controls">
+        <button type="button" id="zoom-in" title="Zoom avant">+</button>
+        <button type="button" id="zoom-out" title="Zoom arrière">−</button>
+        <button type="button" id="zoom-reset" title="Réinitialiser la vue">↺</button>
+      </div>
+      <div class="map-tooltip" id="map-tooltip" aria-hidden="true">
+        <span class="tooltip-city"></span>
+        <span class="tooltip-label"></span>
+        <span class="tooltip-missions"></span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="map-footer">
+        <span><strong>30+</strong> pays couverts</span>
+        <span><strong>1 000+</strong> missions conduites</span>
+        <span><strong>5</strong> zones géographiques</span>
+      </div>
     </div>
   </section>
 
@@ -914,7 +922,7 @@
         <div class="foot-col">
           <p>Navigation rapide</p>
           <a href="#groupe">Le Groupe</a>
-          <a href="#presence">Présence</a>
+          <a href="#zones">Zones</a>
           <a href="#recrutement">Recrutement</a>
           <a href="#entites">Blue Ward Advisory</a>
           <a href="#entites">Blue Ward Security — Événementiel</a>
@@ -932,6 +940,185 @@
       <p class="copyright">© 2025 Blue Ward Group - Tous droits reserves - Societe de securite privee agreee CNAPS</p>
     </div>
   </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+  <script>
+  (function () {
+    const interventionPoints = [
+      { city: "Paris", country: "France", lat: 48.8566, lng: 2.3522, label: "Hub opérationnel Europe", missions: "400+" },
+      { city: "Londres", country: "Royaume-Uni", lat: 51.5074, lng: -0.1278, label: "Bureau Europe du Nord", missions: "80+" },
+      { city: "Genève", country: "Suisse", lat: 46.2044, lng: 6.1432, label: "Organisations internationales", missions: "60+" },
+      { city: "Monaco", country: "Monaco", lat: 43.7384, lng: 7.4246, label: "Clientèle UHNW", missions: "40+" },
+      { city: "Bruxelles", country: "Belgique", lat: 50.8503, lng: 4.3517, label: "Institutions UE / OTAN", missions: "50+" },
+      { city: "Rome", country: "Italie", lat: 41.9028, lng: 12.4964, label: "Délégations diplomatiques", missions: "30+" },
+      { city: "Madrid", country: "Espagne", lat: 40.4168, lng: -3.7038, label: "Opérations Ibérique", missions: "25+" },
+      { city: "Dubaï", country: "Émirats Arabes Unis", lat: 25.2048, lng: 55.2708, label: "Hub Golfe Persique", missions: "120+" },
+      { city: "Riyad", country: "Arabie Saoudite", lat: 24.7136, lng: 46.6753, label: "Missions gouvernementales", missions: "60+" },
+      { city: "Doha", country: "Qatar", lat: 25.2854, lng: 51.531, label: "Grands événements", missions: "40+" },
+      { city: "Abu Dhabi", country: "Émirats Arabes Unis", lat: 24.4539, lng: 54.3773, label: "Familles royales", missions: "35+" },
+      { city: "Beyrouth", country: "Liban", lat: 33.8938, lng: 35.5018, label: "Zone à risque élevé", missions: "20+" },
+      { city: "Abidjan", country: "Côte d'Ivoire", lat: 5.36, lng: -4.0083, label: "Afrique de l'Ouest", missions: "45+" },
+      { city: "Dakar", country: "Sénégal", lat: 14.6937, lng: -17.4441, label: "Délégations officielles", missions: "30+" },
+      { city: "Casablanca", country: "Maroc", lat: 33.5731, lng: -7.5898, label: "Hub Afrique du Nord", missions: "35+" },
+      { city: "Djibouti", country: "Djibouti", lat: 11.8251, lng: 42.5903, label: "Zone stratégique", missions: "15+" },
+      { city: "Nairobi", country: "Kenya", lat: -1.2921, lng: 36.8219, label: "Afrique de l'Est", missions: "20+" },
+      { city: "Tokyo", country: "Japon", lat: 35.6762, lng: 139.6503, label: "Délégations Asie", missions: "25+" },
+      { city: "Singapour", country: "Singapour", lat: 1.3521, lng: 103.8198, label: "Hub Asie du Sud-Est", missions: "20+" },
+      { city: "Hong Kong", country: "Hong Kong", lat: 22.3193, lng: 114.1694, label: "Missions Asie-Pacifique", missions: "15+" },
+      { city: "New York", country: "États-Unis", lat: 40.7128, lng: -74.006, label: "Bureau Amériques", missions: "50+" },
+      { city: "Washington D.C.", country: "États-Unis", lat: 38.9072, lng: -77.0369, label: "Institutions fédérales", missions: "30+" }
+    ];
+
+    async function initWorldMap() {
+      const mapEl = document.getElementById("world-map");
+      const tooltip = document.getElementById("map-tooltip");
+      const zoomIn = document.getElementById("zoom-in");
+      const zoomOut = document.getElementById("zoom-out");
+      const zoomReset = document.getElementById("zoom-reset");
+      if (!mapEl || typeof d3 === "undefined" || typeof topojson === "undefined") return;
+
+      let width = mapEl.clientWidth;
+      const height = mapEl.clientHeight || 520;
+      if (width < 80) width = Math.min(1400, window.innerWidth * 0.92);
+
+      const projection = d3.geoNaturalEarth1()
+        .scale(width / 5.85)
+        .translate([width / 2, height / 2]);
+
+      const path = d3.geoPath().projection(projection);
+
+      const svg = d3.select(mapEl)
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("viewBox", [0, 0, width, height])
+        .attr("role", "presentation");
+
+      const g = svg.append("g");
+
+      g.append("rect")
+        .attr("class", "ocean-bg")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("fill", "#0d1117")
+        .style("pointer-events", "none");
+
+      const zoom = d3.zoom()
+        .scaleExtent([1, 10])
+        .on("zoom", function (event) {
+          g.attr("transform", event.transform);
+        });
+
+      svg.call(zoom);
+      svg.on("dblclick.zoom", null);
+      svg.on("dblclick", function (event) {
+        event.preventDefault();
+        svg.transition().duration(400).call(zoom.transform, d3.zoomIdentity);
+      });
+
+      let world;
+      try {
+        world = await d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json");
+      } catch (e) {
+        mapEl.innerHTML = "<p style=\"color:#7a8494;padding:2rem;text-align:center;\">Carte indisponible (vérifiez la connexion).</p>";
+        return;
+      }
+
+      const countries = topojson.feature(world, world.objects.countries);
+
+      g.selectAll("path.country")
+        .data(countries.features)
+        .join("path")
+        .attr("class", "country")
+        .attr("d", path)
+        .on("click", function (event) {
+          event.stopPropagation();
+          g.selectAll(".country").classed("country--active", false);
+          d3.select(this).classed("country--active", true);
+        });
+
+      svg.on("click", function (event) {
+        const t = event.target;
+        if (t.classList && t.classList.contains("country")) return;
+        if (t.closest && t.closest(".intervention-point")) return;
+        g.selectAll(".country").classed("country--active", false);
+      });
+
+      interventionPoints.forEach(function (point, i) {
+        const coords = projection([point.lng, point.lat]);
+        if (coords == null || coords[0] == null || !isFinite(coords[0])) return;
+        const x = coords[0];
+        const y = coords[1];
+
+        const gPoint = g.append("g")
+          .attr("class", "intervention-point")
+          .attr("transform", "translate(" + x + "," + y + ")");
+
+        gPoint.append("circle")
+          .attr("class", "pulse")
+          .attr("r", 4)
+          .style("animation-delay", ((i % 4) * 0.6) + "s");
+
+        gPoint.append("circle")
+          .attr("class", "dot")
+          .attr("r", 4);
+
+        gPoint
+          .on("mouseenter", function () {
+            tooltip.querySelector(".tooltip-city").textContent =
+              point.city.toUpperCase() + " — " + point.country.toUpperCase();
+            tooltip.querySelector(".tooltip-label").textContent = point.label;
+            tooltip.querySelector(".tooltip-missions").textContent = "Interventions : " + point.missions;
+            tooltip.classList.add("visible");
+            tooltip.setAttribute("aria-hidden", "false");
+          })
+          .on("mousemove", function (event) {
+            const wrapper = document.querySelector(".map-wrapper");
+            if (!wrapper) return;
+            const rect = wrapper.getBoundingClientRect();
+            let tipX = event.clientX - rect.left + 14;
+            let tipY = event.clientY - rect.top - 10;
+            if (tipX + 240 > wrapper.clientWidth) tipX = event.clientX - rect.left - 240;
+            if (tipX < 8) tipX = 8;
+            if (tipY < 8) tipY = 8;
+            tooltip.style.left = tipX + "px";
+            tooltip.style.top = tipY + "px";
+          })
+          .on("mouseleave", function () {
+            tooltip.classList.remove("visible");
+            tooltip.setAttribute("aria-hidden", "true");
+          })
+          .on("click", function (event) {
+            event.stopPropagation();
+          });
+      });
+
+      function zoomBtn(fn) {
+        return function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          fn();
+        };
+      }
+      zoomIn.addEventListener("click", zoomBtn(function () {
+        svg.transition().duration(300).call(zoom.scaleBy, 1.5);
+      }));
+      zoomOut.addEventListener("click", zoomBtn(function () {
+        svg.transition().duration(300).call(zoom.scaleBy, 1 / 1.5);
+      }));
+      zoomReset.addEventListener("click", zoomBtn(function () {
+        svg.transition().duration(400).call(zoom.transform, d3.zoomIdentity);
+      }));
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initWorldMap);
+    } else {
+      initWorldMap();
+    }
+  })();
+  </script>
 
   <script>
     const topbar = document.getElementById("topbar");
