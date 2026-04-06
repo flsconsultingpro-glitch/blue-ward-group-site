@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0A0A"/>
+      <stop offset="100%" style="stop-color:#111318"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="620" fill="url(#bg)"/>
+  <g fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.55" stroke-linejoin="round">
+    <!-- Graticule -->
+    <g opacity="0.85">
+      <path d="M0 80 H1200 M0 140 H1200 M0 200 H1200 M0 260 H1200 M0 320 H1200 M0 380 H1200 M0 440 H1200 M0 500 H1200 M0 560 H1200"/>
+      <path d="M80 0 V620 M200 0 V620 M320 0 V620 M440 0 V620 M560 0 V620 M680 0 V620 M800 0 V620 M920 0 V620 M1040 0 V620"/>
+    </g>
+    <!-- Silhouettes simplifiées continents (lignes épures) -->
+    <path d="M180 200 Q140 240 160 300 Q150 360 200 400 Q260 420 320 380 Q380 340 400 280 Q390 220 340 180 Q260 160 180 200"/>
+    <path d="M420 160 Q480 140 540 180 Q580 220 560 280 Q520 320 460 300 Q420 260 420 200 Z"/>
+    <path d="M560 120 Q640 100 720 140 Q780 200 760 280 Q700 320 620 300 Q540 260 560 180 Z"/>
+    <path d="M780 100 Q880 80 960 120 Q1020 180 1000 260 Q940 300 860 280 Q780 240 760 180 Q760 120 780 100 Z"/>
+    <path d="M200 420 Q280 400 360 440 Q420 500 400 560 Q320 580 240 540 Q180 480 200 420 Z"/>
+    <path d="M520 440 Q600 420 680 460 Q740 520 700 580 Q620 600 540 560 Q480 500 520 440 Z"/>
+    <path d="M900 360 Q980 340 1040 400 Q1080 460 1040 520 Q980 540 920 500 Q880 440 900 360 Z"/>
+    <path d="M1000 200 Q1060 180 1120 220 Q1140 280 1100 320 Q1040 300 1000 260 Q980 220 1000 200 Z"/>
+  </g>
+</svg>

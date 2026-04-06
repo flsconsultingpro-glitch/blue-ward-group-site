@@ -4,26 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blue Ward Group | Securite privee internationale</title>
-  <meta name="description" content="Blue Ward Group — Gestion des risques et protection globale. Anticiper la menace, protéger ce qui compte. Solutions sur mesure en France et à l'international.">
+  <meta name="description" content="Blue Ward Group. Gestion des risques et protection globale. Analyse de la menace, déploiement opérationnel, France et international.">
   <meta property="og:title" content="Blue Ward Group">
-  <meta property="og:description" content="Anticiper la menace. Protéger ce qui compte. Solutions de protection sur mesure pour environnements à risque.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1400&q=80&auto=format&fit=crop&grayscale">
+  <meta property="og:description" content="Anticiper la menace. Protéger ce qui compte.">
+  <meta property="og:image" content="https://flsconsultingpro-glitch.github.io/blue-ward-group-site/assets/world-map-lines.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --black: #0A0A0A;
-      --deep: #111318;
-      --surface: #161A20;
-      --border: #252A32;
-      --muted: #3A414D;
-      --text-sec: #8A919E;
-      --text-pri: #E8EAF0;
-      --white: #F4F5F7;
-      --gold: #B8965A;
-      --gold-light: #D4AF7A;
-      --accent: #1E3A5F;
+      --black: #0D1117;
+      --deep: #10141A;
+      --surface: #161C24;
+      --border: #1E2530;
+      --muted: #2E3744;
+      --text-sec: #7A8494;
+      --text-pri: #E2E6EE;
+      --white: #F0F2F5;
+      --gold: #C4922A;
+      --gold-light: #D4A84B;
+      --accent: #1A3355;
       --max: 1280px;
     }
 
@@ -36,11 +36,11 @@
       overflow-x: hidden;
       cursor: default;
     }
-    ::selection { color: var(--gold-light); background: #1a1c23; }
+    ::selection { color: var(--gold-light); background: #151a22; }
     ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: #101319; }
     ::-webkit-scrollbar-thumb { background: var(--border); }
-    a, button, .entity-card, .expert-item, input, textarea, select { transition: all 0.25s ease; }
+    a, button, .entity-card, .expert-row, input, textarea, select { transition: all 0.25s ease; }
 
     .container { width: min(var(--max), 92%); margin: 0 auto; }
     .section { padding: 120px 0; }
@@ -67,7 +67,7 @@
       background: transparent;
       border-bottom: 1px solid transparent;
     }
-    .topbar.scrolled { background: rgba(17, 19, 24, 0.97); border-bottom-color: var(--border); }
+    .topbar.scrolled { background: rgba(16, 20, 26, 0.97); border-bottom-color: var(--border); }
     .nav {
       min-height: 82px;
       display: grid;
@@ -107,7 +107,7 @@
       text-transform: uppercase;
       letter-spacing: 0.12em;
     }
-    .cta:hover { background: var(--gold); color: #0f1218; }
+    .cta:hover { background: var(--gold); color: #0d1117; }
     .burger {
       display: none;
       justify-self: end;
@@ -163,13 +163,60 @@
       display: flex;
       align-items: center;
       position: relative;
-      background-image:
-        linear-gradient(to bottom, rgba(10,10,10,0.72) 0%, rgba(10,10,10,0.45) 50%, rgba(10,10,10,0.94) 100%),
-        url("https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1920&q=80&auto=format&fit=crop&grayscale");
+      overflow: hidden;
+      background: linear-gradient(180deg, #0A0A0A 0%, #111318 100%);
+    }
+    .hero-map-layer {
+      position: absolute;
+      inset: 0;
+      background-color: #0D1117;
+      background-image: url("assets/world-map-lines.svg");
       background-size: cover;
       background-position: center;
     }
-    .hero-inner { margin-top: 76px; }
+    .hero-map-layer::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 85% 70% at 50% 42%, rgba(13,17,23,0.28) 0%, rgba(13,17,23,0.9) 100%);
+    }
+    .hero-pulses {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .pulse-dot {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.5;
+      transform: translate(-50%, -50%);
+      animation: mapPulse 3.4s ease-in-out infinite;
+    }
+    .pulse-dot:nth-child(1) { left: 49%; top: 34%; }
+    .pulse-dot:nth-child(2) { left: 51%; top: 30%; animation-delay: 0.85s; }
+    .pulse-dot:nth-child(3) { left: 72%; top: 38%; animation-delay: 1.7s; }
+    .pulse-dot:nth-child(4) { left: 28%; top: 36%; animation-delay: 2.55s; }
+    @keyframes mapPulse {
+      0%, 100% {
+        opacity: 0.22;
+        box-shadow: 0 0 0 0 rgba(196, 146, 42, 0);
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% {
+        opacity: 0.95;
+        box-shadow: 0 0 22px 8px rgba(196, 146, 42, 0.12);
+        transform: translate(-50%, -50%) scale(1.2);
+      }
+    }
+    .hero-inner {
+      margin-top: 76px;
+      position: relative;
+      z-index: 2;
+    }
     .hero-kicker {
       color: var(--gold);
       text-transform: uppercase;
@@ -189,9 +236,10 @@
       opacity: 0;
       animation: fadeUp 0.8s ease-out 0.14s forwards;
     }
-    .hero p {
+    .hero p.hero-lead {
       max-width: 720px;
       color: var(--text-sec);
+      font-weight: 300;
       font-size: 18px;
       opacity: 0;
       animation: fadeUp 0.8s ease-out 0.26s forwards;
@@ -217,7 +265,7 @@
       border-color: var(--gold);
       color: var(--gold);
     }
-    .btn.gold:hover { background: var(--gold); color: #0f1218; }
+    .btn.gold:hover { background: var(--gold); color: #0d1117; }
     .btn:hover { border-color: var(--gold); color: var(--gold-light); }
     .scroll-indicator {
       position: absolute;
@@ -270,50 +318,53 @@
       border-left-color: var(--gold);
       border-left-width: 2px;
     }
-    .entity-num {
-      position: absolute;
-      top: 22px;
-      right: 22px;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 48px;
-      font-weight: 300;
-      color: var(--muted);
+    .entity-head {
+      display: flex;
+      gap: 22px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
     }
-    .entity-icon { color: var(--gold); margin-bottom: 12px; }
+    .entity-num {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 52px;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--muted);
+      flex-shrink: 0;
+      min-width: 72px;
+    }
     .entity-card h3 {
       font-family: "Cormorant Garamond", serif;
-      font-size: 30px;
+      font-size: 22px;
       font-weight: 400;
-      margin-bottom: 4px;
-      max-width: 90%;
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
     }
     .entity-tag {
       color: var(--text-sec);
-      text-transform: uppercase;
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      margin-bottom: 14px;
-      padding-bottom: 12px;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      margin: 0;
+    }
+    .entity-card p { color: var(--text-sec); margin-bottom: 0; line-height: 1.65; }
+
+    .expert-list { margin-top: 40px; max-width: 880px; }
+    .expert-row {
+      padding: 32px 0;
       border-bottom: 1px solid var(--border);
     }
-    .entity-card p { color: var(--text-sec); margin-bottom: 10px; }
-    .entity-list { color: var(--gold-light); font-size: 14px; }
-
-    .expert-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 28px;
+    .expert-row:first-of-type { padding-top: 0; }
+    .expert-row:last-of-type { border-bottom: none; padding-bottom: 0; }
+    .expert-row strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      color: var(--text-pri);
     }
-    .expert-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 22px;
-    }
-    .expert-item:hover { border-color: #343b46; }
-    .expert-icon { color: var(--gold); margin-bottom: 10px; }
-    .expert-item h4 { font-size: 16px; margin-bottom: 7px; font-weight: 500; }
-    .expert-item p { color: var(--text-sec); font-size: 14px; }
+    .expert-row p { color: var(--text-sec); font-size: 15px; font-weight: 300; line-height: 1.65; }
 
     .stats-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .stats-grid {
@@ -338,48 +389,26 @@
     .stat-title { font-size: 16px; margin-bottom: 8px; }
     .stat p { color: var(--text-sec); font-size: 14px; }
 
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-top: 28px;
-      position: relative;
-    }
-    .process-grid::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: -8px;
-      height: 1px;
-      background: var(--gold);
-      opacity: 0.55;
-    }
-    .step { border: 1px solid var(--border); background: var(--surface); padding: 20px; }
-    .step .num { color: var(--gold); margin-bottom: 8px; font-size: 12px; letter-spacing: 0.15em; }
-    .step h4 { margin-bottom: 8px; font-size: 16px; }
-    .step p { color: var(--text-sec); font-size: 14px; }
-
     .clients-grid {
       display: grid;
       grid-template-columns: 60% 40%;
       gap: 24px;
       align-items: start;
     }
-    .client-list { list-style: none; display: grid; gap: 11px; margin-top: 8px; }
-    .client-list li {
-      padding-left: 16px;
-      position: relative;
-      color: var(--text-pri);
+    .client-copy p {
+      color: var(--text-sec);
+      margin-bottom: 22px;
+      line-height: 1.75;
+      font-size: 16px;
+      font-weight: 300;
     }
-    .client-list li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 9px;
-      width: 8px;
-      height: 1px;
-      background: var(--gold);
+    .client-copy p.lead { color: var(--text-pri); font-size: 17px; }
+    .client-block {
+      margin-top: 28px;
+      color: var(--text-pri);
+      font-size: 15px;
+      line-height: 2;
+      font-weight: 300;
     }
     .editorial {
       color: var(--text-sec);
@@ -407,7 +436,7 @@
     }
     .field input, .field textarea, .field select {
       width: 100%;
-      background: #12161c;
+      background: #141a22;
       border: 1px solid var(--border);
       color: var(--text-pri);
       padding: 11px;
@@ -482,18 +511,16 @@
 
     @media (max-width: 1199px) {
       .section { padding: 90px 0; }
-      .process-grid { grid-template-columns: 1fr 1fr; }
-      .process-grid::before { display: none; }
     }
     @media (max-width: 768px) {
       .section { padding: 80px 0; }
       .nav { grid-template-columns: 1fr auto; }
       .desktop-links, .cta { display: none; }
       .burger { display: inline-flex; }
-      .about-grid, .entities-grid, .expert-grid, .clients-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; }
+      .about-grid, .entities-grid, .clients-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .about-media { min-height: 360px; }
-      .hero p { font-size: 16px; }
+      .hero p.hero-lead { font-size: 16px; }
     }
   </style>
 </head>
@@ -503,11 +530,11 @@
       <a class="brand" href="#hero">BLUE WARD GROUP</a>
       <nav class="desktop-links">
         <a href="#groupe">Le Groupe</a>
-        <a href="#entites">Entites</a>
+        <a href="#entites">Entités</a>
         <a href="#expertise">Expertise</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="cta" href="#contact">Nous contacter</a>
+      <a class="cta" href="#contact">Prendre contact</a>
       <button class="burger" id="burger" aria-label="Menu"><span></span></button>
     </div>
   </header>
@@ -515,23 +542,30 @@
   <aside class="mobile-menu" id="mobileMenu">
     <nav>
       <a href="#groupe">Le Groupe</a>
-      <a href="#entites">Entites</a>
+      <a href="#entites">Entités</a>
       <a href="#expertise">Expertise</a>
       <a href="#contact">Contact</a>
     </nav>
   </aside>
 
   <section class="hero" id="hero">
+    <div class="hero-map-layer" aria-hidden="true"></div>
+    <div class="hero-pulses" aria-hidden="true">
+      <span class="pulse-dot"></span>
+      <span class="pulse-dot"></span>
+      <span class="pulse-dot"></span>
+      <span class="pulse-dot"></span>
+    </div>
     <div class="container hero-inner">
       <p class="hero-kicker">GESTION DES RISQUES &amp; PROTECTION GLOBALE</p>
       <h1>Anticiper la menace.<br>Protéger ce qui compte.</h1>
-      <p>
-        Blue Ward Group structure des solutions de protection sur mesure pour les environnements à risque — de l'analyse
-        de la menace au déploiement opérationnel, en France et à l'international.
+      <p class="hero-lead">
+        Blue Ward Group structure des solutions de protection pour les environnements à risque — de l'analyse de la menace
+        au déploiement opérationnel, en France et à l'international.
       </p>
       <div class="hero-actions">
-        <a class="btn gold" href="#groupe">Decouvrir le Groupe</a>
-        <a class="btn" href="#contact">Nous contacter</a>
+        <a class="btn gold" href="#contact">Prendre contact</a>
+        <a class="btn" href="#groupe">Notre approche</a>
       </div>
     </div>
     <div class="scroll-indicator">↓</div>
@@ -540,11 +574,12 @@
   <section class="section reveal" id="groupe">
     <div class="container about-grid">
       <div class="about-text">
-        <p class="label">A propos</p>
-        <h2>Un groupe fonde sur l'exigence et la discretion</h2>
-        <p>Blue Ward Group est un groupe prive international dedie a la protection de personnes, de delegations et d'environnements a risque. Ses entites couvrent l'ensemble du spectre de la securite privee, du conseil strategique a la protection de profils exposes.</p>
-        <p>Depuis sa creation, le groupe a accompagne plus de 1 000 delegations etrangeres a risque, assure des missions de protection de hauts responsables institutionnels, de dirigeants d'entreprise et de familles a forte exposition.</p>
-        <p>Notre approche repose sur trois principes : evaluation rigoureuse du risque, dispositifs sur mesure et discretion operationnelle totale.</p>
+        <p class="label">À propos</p>
+        <h2>Un groupe structuré autour d'une réalité : la menace existe.</h2>
+        <p>Certains environnements ne tolèrent pas l'approximation. Blue Ward Group a été fondé pour opérer dans ces environnements.</p>
+        <p>Le groupe réunit des entités spécialisées dans l'évaluation du risque, la protection des personnes et la sécurisation des opérations sensibles. Il intervient auprès de gouvernements, d'institutions internationales, de familles patrimoniales et de dirigeants exposés — en France et dans plus de 30 pays.</p>
+        <p>Depuis sa création, le groupe a conduit plus de 1 000 missions de protection de délégations étrangères, assuré la sécurité de chefs d'État en déplacement officiel, de membres de familles royales, et déployé des dispositifs lors d'événements internationaux majeurs — Jeux Olympiques, Coupe du Monde FIFA, sommets diplomatiques.</p>
+        <p>Le groupe ne revendique pas d'être le meilleur. Il revendique d'avoir été là quand ça comptait.</p>
       </div>
       <div class="about-media" aria-label="Photo atmospherique"></div>
     </div>
@@ -552,40 +587,48 @@
 
   <section class="section reveal" id="entites">
     <div class="container">
-      <p class="label">Entites</p>
-      <h2>Notre spectre d'intervention</h2>
+      <p class="label">Entités</p>
+      <h2>Les quatre entités du groupe</h2>
       <div class="entities-grid">
         <article class="entity-card reveal">
-          <div class="entity-num">01</div>
-          <div class="entity-icon">◈</div>
-          <h3>Blue Ward Advisory</h3>
-          <p class="entity-tag">Conseil en surete strategique</p>
-          <p>Accompagnement d'Etats, d'ambassades, d'institutions et de familles patrimoniales dans la definition de leur strategie de protection globale.</p>
-          <p class="entity-list">Gouvernements · Ambassades · Institutions · Grandes fortunes</p>
+          <div class="entity-head">
+            <span class="entity-num">01</span>
+            <div>
+              <h3>BLUE WARD ADVISORY</h3>
+              <p class="entity-tag">Conseil en stratégie de sûreté</p>
+            </div>
+          </div>
+          <p>Analyse géopolitique, cartographie des risques, conception de dispositifs institutionnels. Pour les États, les ambassades et les organisations dont les décisions ont des conséquences réelles.</p>
         </article>
         <article class="entity-card reveal">
-          <div class="entity-num">02</div>
-          <div class="entity-icon">▦</div>
-          <h3>Blue Ward Security - Evenementiel</h3>
-          <p class="entity-tag">Securisation d'evenements premium</p>
-          <p>Dispositifs discrets pour galas, ceremonies officielles, diners de prestige et rencontres diplomatiques a audience sensible.</p>
-          <p class="entity-list">Galas · Soirees privees · Ceremonies · Evenements diplomatiques</p>
+          <div class="entity-head">
+            <span class="entity-num">02</span>
+            <div>
+              <h3>BLUE WARD SECURITY / ÉVÉNEMENTIEL</h3>
+              <p class="entity-tag">Sécurité événementielle</p>
+            </div>
+          </div>
+          <p>Galas, cérémonies, dîners officiels, événements privés à audience sensible. Intégration discrète, maîtrise du protocole, gestion des accès et des flux sans rupture de format.</p>
         </article>
         <article class="entity-card reveal">
-          <div class="entity-num">03</div>
-          <div class="entity-icon">▣</div>
-          <h3>Blue Ward Security - Site</h3>
-          <p class="entity-tag">Protection sur site</p>
-          <p>Securisation ponctuelle ou permanente de residences, proprietes de prestige et sites corporate, avec integration aux systemes techniques.</p>
-          <p class="entity-list">Residences · Proprietes · Sites corporate · Environnements sensibles</p>
+          <div class="entity-head">
+            <span class="entity-num">03</span>
+            <div>
+              <h3>BLUE WARD SECURITY / SITE</h3>
+              <p class="entity-tag">Protection sur site</p>
+            </div>
+          </div>
+          <p>Résidences, propriétés de prestige, sites d'entreprise. Évaluation du dispositif existant, déploiement d'agents qualifiés, coordination avec les systèmes techniques en place.</p>
         </article>
         <article class="entity-card reveal">
-          <div class="entity-num">04</div>
-          <div class="entity-icon">◉</div>
-          <h3>Blue Ward Risk Management</h3>
-          <p class="entity-tag">Protection de personnes a risque</p>
-          <p>Protection rapprochee de dirigeants, VIP et delegations, couverture civile ou armee selon le niveau de menace.</p>
-          <p class="entity-list">Dirigeants · VIP · Delegations · Zones de crise</p>
+          <div class="entity-head">
+            <span class="entity-num">04</span>
+            <div>
+              <h3>BLUE WARD RISK MANAGEMENT</h3>
+              <p class="entity-tag">Protection de personnes</p>
+            </div>
+          </div>
+          <p>Protection rapprochée civile ou armée selon le niveau de menace réel. Dirigeants exposés, personnalités en déplacement, ressortissants en zone hostile. Évaluation préalable. Protocoles adaptés.</p>
         </article>
       </div>
     </div>
@@ -594,18 +637,18 @@
   <section class="section reveal" id="expertise">
     <div class="container">
       <p class="label">Expertise</p>
-      <h2>Des capacites operationnelles eprouvees</h2>
-      <p class="intro">Le groupe intervient dans des environnements a haute exigence, pour une clientele internationale aux profils sensibles.</p>
-      <div class="expert-grid">
-        <article class="expert-item reveal"><div class="expert-icon">⛨</div><h4>Protection armee</h4><p>Agents certifies pour les profils a risque critique.</p></article>
-        <article class="expert-item reveal"><div class="expert-icon">◎</div><h4>Operations internationales</h4><p>Deploiements en Europe, Moyen-Orient, Afrique et Asie.</p></article>
-        <article class="expert-item reveal"><div class="expert-icon">★</div><h4>Delegations officielles</h4><p>Accueil et escorte de chefs d'Etat et corps diplomatiques.</p></article>
-        <article class="expert-item reveal"><div class="expert-icon">◍</div><h4>Familles royales & UHNW</h4><p>Dispositifs permanents pour profils tres haute valeur.</p></article>
-        <article class="expert-item reveal"><div class="expert-icon">▤</div><h4>Grands evenements</h4><p>Experience JO, Coupe du Monde FIFA, sommets internationaux.</p></article>
-        <article class="expert-item reveal"><div class="expert-icon">◌</div><h4>Gestion de crise</h4><p>Protocoles d'urgence et extraction de personnels exposes.</p></article>
-        <article class="expert-item reveal"><div class="expert-icon">◐</div><h4>Contre-surveillance</h4><p>Detection de filature et analyse comportementale.</p></article>
-        <article class="expert-item reveal"><div class="expert-icon">⬒</div><h4>Transport securise</h4><p>Flotte banalisee ou blindee, chauffeurs operationnels.</p></article>
-        <article class="expert-item reveal"><div class="expert-icon">▧</div><h4>Coordination institutionnelle</h4><p>Liaison avec autorites, services et representations etatiques.</p></article>
+      <h2>Domaines d'intervention</h2>
+      <p class="intro">Interventions dans des contextes où le risque est documenté, avec des profils d'exposition variables.</p>
+      <div class="expert-list">
+        <div class="expert-row reveal"><strong>Protection armée</strong><p>Agents habilités lorsque le niveau de menace le justifie et que le cadre légal le permet.</p></div>
+        <div class="expert-row reveal"><strong>Opérations internationales</strong><p>Déploiements en Europe, Moyen-Orient, Afrique et Asie.</p></div>
+        <div class="expert-row reveal"><strong>Délégations officielles</strong><p>Accueil et escorte de chefs d'État et de corps diplomatiques.</p></div>
+        <div class="expert-row reveal"><strong>Familles royales et patrimoines concentrés</strong><p>Dispositifs lorsque l'exposition est durable et mesurable.</p></div>
+        <div class="expert-row reveal"><strong>Événements à fort enjeu</strong><p>Jeux Olympiques, Coupe du Monde FIFA, sommets diplomatiques.</p></div>
+        <div class="expert-row reveal"><strong>Gestion de crise</strong><p>Protocoles d'urgence et extraction lorsque le contexte l'exige.</p></div>
+        <div class="expert-row reveal"><strong>Contre-surveillance</strong><p>Détection de filature, analyse comportementale, appui TSCM.</p></div>
+        <div class="expert-row reveal"><strong>Transport sécurisé</strong><p>Flotte banalisée ou blindée, conducteurs briefés sur l'itinéraire.</p></div>
+        <div class="expert-row reveal"><strong>Coordination interinstitutionnelle</strong><p>Liaison avec autorités, préfectures, représentations d'État.</p></div>
       </div>
     </div>
   </section>
@@ -614,47 +657,33 @@
     <div class="container">
       <p class="label">Track record</p>
       <div class="stats-grid">
-        <article class="stat reveal"><div class="stat-value" data-count="1000" data-suffix="+">0</div><h4 class="stat-title">Delegations accompagnees</h4><p>Missions de protection de delegations officielles en France et a l'international.</p></article>
-        <article class="stat reveal"><div class="stat-value" data-count="15" data-suffix="+">0</div><h4 class="stat-title">Annees d'experience</h4><p>Un historique operationnel construit sur des missions a haute criticite.</p></article>
-        <article class="stat reveal"><div class="stat-value" data-count="30" data-suffix="+">0</div><h4 class="stat-title">Pays d'intervention</h4><p>Capacite de deploiement dans les zones a risque a travers le monde.</p></article>
-        <article class="stat reveal"><div class="stat-value" data-count="24" data-suffix="/7">0</div><h4 class="stat-title">Disponibilite operationnelle</h4><p>Cellule d'astreinte permanente pour activation urgente.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section reveal" id="processus">
-    <div class="container">
-      <p class="label">Methode</p>
-      <h2>De l'evaluation au deploiement</h2>
-      <div class="process-grid">
-        <article class="step reveal"><p class="num">01 - EVALUATION</p><h4>Analyse de menace</h4><p>Cartographie des risques et audit confidentiel de l'environnement.</p></article>
-        <article class="step reveal"><p class="num">02 - CONCEPTION</p><h4>Dispositif sur mesure</h4><p>Ressources, protocoles et coordination selon vos contraintes.</p></article>
-        <article class="step reveal"><p class="num">03 - DEPLOIEMENT</p><h4>Activation des equipes</h4><p>Briefings operationnels et integration discrete dans votre cadre.</p></article>
-        <article class="step reveal"><p class="num">04 - SUIVI</p><h4>Ajustement continu</h4><p>Debriefing, rapport de mission et evolution des protocoles.</p></article>
+        <article class="stat reveal"><div class="stat-value" data-count="1000" data-suffix="+">0</div><h4 class="stat-title">Délégations protégées</h4><p>Missions de protection de délégations officielles étrangères conduites en France et à l'international.</p></article>
+        <article class="stat reveal"><div class="stat-value" data-count="30" data-suffix="+">0</div><h4 class="stat-title">Pays d'intervention</h4><p>Déploiements opérationnels en Europe, Moyen-Orient, Afrique et Asie.</p></article>
+        <article class="stat reveal"><div class="stat-value" data-display="247">24 / 7</div><h4 class="stat-title">Astreinte opérationnelle</h4><p>Cellule d'activation permanente pour les situations qui n'attendent pas.</p></article>
+        <article class="stat reveal"><div class="stat-value" data-count="0" data-suffix="">0</div><h4 class="stat-title">Incident majeur non anticipé</h4><p>L'indicateur le plus important n'est pas visible. C'est ce qui ne s'est pas produit.</p></article>
       </div>
     </div>
   </section>
 
   <section class="section reveal" id="clientele">
     <div class="container clients-grid">
-      <div>
-        <p class="label">Clientele</p>
-        <h2>Un groupe qui intervient la ou l'exigence est totale</h2>
-        <ul class="client-list">
-          <li>Gouvernements et corps diplomatiques</li>
-          <li>Familles royales et Tetes d'Etat</li>
-          <li>Dirigeants d'entreprise et executives exposes</li>
-          <li>Organisations internationales</li>
-          <li>Grandes familles patrimoniales et UHNW</li>
-          <li>Personnalites mediatiques a risque</li>
-          <li>Evenements officiels et sommets internationaux</li>
-          <li>Missions humanitaires en zone hostile</li>
-        </ul>
+      <div class="client-copy">
+        <p class="label">Clientèle</p>
+        <h2>Pour ceux dont la sécurité ne peut pas être improvisée.</h2>
+        <p class="lead">Les interlocuteurs du groupe ne cherchent pas un prestataire. Ils cherchent un opérateur en qui ils peuvent avoir une confiance totale.</p>
+        <div class="client-block">
+          Gouvernements et corps diplomatiques.<br>
+          Familles royales et chefs d'État en déplacement.<br>
+          Dirigeants d'entreprise sous exposition médiatique ou concurrentielle.<br>
+          Grandes familles patrimoniales.<br>
+          Organisations internationales en environnement instable.<br>
+          Événements à enjeu protocolaire ou sécuritaire élevé.
+        </div>
       </div>
       <p class="editorial">
-        Nos engagements ne sont pas publics.<br>
-        La discretion est notre premier service.<br><br>
-        Chaque dossier est traite de maniere confidentielle par notre direction operationnelle.
+        Les engagements du groupe ne sont pas publics.<br>
+        La confidentialité n'est pas une option : c'est le fondement de la relation avec chaque client.<br><br>
+        Les premiers contacts se font par recommandation, par voie institutionnelle, ou directement via la direction opérationnelle.
       </p>
     </div>
   </section>
@@ -663,10 +692,10 @@
     <div class="container contact-grid">
       <div class="contact-text">
         <p class="label">Contact</p>
-        <h2>Engager une premiere discussion</h2>
-        <p>Toute demande adressee a Blue Ward Group est traitee avec la plus stricte confidentialite.</p>
-        <p>Nos equipes restent disponibles pour evaluer votre situation et definir, si necessaire, la nature de notre intervention.</p>
-        <p>Pour les demandes urgentes, une astreinte operationnelle est disponible en permanence.</p>
+        <h2>Premier contact</h2>
+        <p>Toute demande adressée à Blue Ward Group est traitée sous confidentialité stricte.</p>
+        <p>Chaque dossier fait l'objet d'une lecture préalable. La réponse précise la nature possible d'une intervention.</p>
+        <p>Pour les situations urgentes, l'astreinte opérationnelle est active en continu.</p>
         <div class="contact-meta">
           <p><strong>Email :</strong> contact@bluewardgroup.com</p>
           <p><strong>Telephone :</strong> +33 (0)1 XX XX XX XX</p>
@@ -699,13 +728,13 @@
       <div class="footer-grid">
         <div class="foot-col">
           <p class="foot-title">BLUE WARD GROUP</p>
-          <p>Protection. Discretion. Excellence.</p>
+          <p>Risque. Réponse. Confidentialité.</p>
         </div>
         <div class="foot-col">
           <p>Navigation rapide</p>
           <a href="#groupe">Le Groupe</a>
           <a href="#entites">Blue Ward Advisory</a>
-          <a href="#entites">Blue Ward Security - Evenementiel</a>
+          <a href="#entites">Blue Ward Security — Événementiel</a>
           <a href="#entites">Blue Ward Security - Site</a>
           <a href="#entites">Blue Ward Risk Management</a>
           <a href="#contact">Contact</a>
@@ -759,8 +788,16 @@
       if (counted) return;
       counted = true;
       statValues.forEach((el) => {
-        const target = Number(el.dataset.count || "0");
-        const suffix = el.dataset.suffix || "";
+        if (el.dataset.display === "247") {
+          el.textContent = "24 / 7";
+          return;
+        }
+        const target = Number(el.dataset.count ?? "0");
+        const suffix = el.dataset.suffix ?? "";
+        if (target === 0 && suffix === "") {
+          el.textContent = "0";
+          return;
+        }
         const duration = 1500;
         const start = performance.now();
         const step = (now) => {
