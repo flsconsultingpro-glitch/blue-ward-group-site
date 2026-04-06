@@ -491,6 +491,88 @@
       border: 0;
     }
 
+    .recruit-section {
+      border-top: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(22, 28, 36, 0.35) 0%, transparent 100%);
+    }
+    .recruit-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .recruit-list {
+      margin-top: 26px;
+      list-style: none;
+      padding: 0;
+    }
+    .recruit-list li {
+      padding-left: 18px;
+      position: relative;
+      margin-bottom: 14px;
+      color: var(--text-sec);
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+    .recruit-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 6px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .recruit-panel {
+      border: 1px solid var(--border);
+      padding: 28px 26px;
+      background: var(--surface);
+    }
+    .recruit-panel-title {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .recruit-panel p {
+      color: var(--text-sec);
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+    .recruit-panel a.mail {
+      color: var(--gold-light);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(196, 146, 42, 0.35);
+    }
+    .recruit-panel a.mail:hover {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+    .recruit-note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+    .recruit-btn {
+      display: inline-block;
+      margin-top: 20px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      text-decoration: none;
+      padding: 12px 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .recruit-btn:hover {
+      background: var(--gold);
+      color: #0d1117;
+    }
+
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .contact-text p { color: var(--text-sec); margin-bottom: 10px; }
     .contact-meta { margin-top: 20px; line-height: 1.8; }
@@ -588,7 +670,7 @@
       .nav { grid-template-columns: 1fr auto; }
       .desktop-links, .cta { display: none; }
       .burger { display: inline-flex; }
-      .about-grid, .entities-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; }
+      .about-grid, .entities-grid, .recruit-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; }
       .presence-map-wrap { aspect-ratio: 4 / 3; max-height: none; min-height: 280px; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .about-media { min-height: 360px; }
@@ -605,6 +687,7 @@
         <a href="#entites">Entités</a>
         <a href="#expertise">Expertise</a>
         <a href="#presence">Présence</a>
+        <a href="#recrutement">Recrutement</a>
         <a href="#contact">Contact</a>
       </nav>
       <a class="cta" href="#contact">Prendre contact</a>
@@ -618,6 +701,7 @@
       <a href="#entites">Entités</a>
       <a href="#expertise">Expertise</a>
       <a href="#presence">Présence</a>
+      <a href="#recrutement">Recrutement</a>
       <a href="#contact">Contact</a>
     </nav>
   </aside>
@@ -788,6 +872,37 @@
     </div>
   </section>
 
+  <section class="section reveal recruit-section" id="recrutement">
+    <div class="container recruit-grid">
+      <div>
+        <p class="label">Recrutement</p>
+        <h2>Agents de protection rapprochée</h2>
+        <p class="intro">
+          Le groupe constitue des équipes pour des missions en France et à l'étranger. La sélection repose sur des critères opérationnels et sur le respect du cadre réglementaire.
+        </p>
+        <ul class="recruit-list">
+          <li>Carte professionnelle CNAPS (APR ou équivalent selon le poste) valide</li>
+          <li>Expérience en protection physique, sécurité rapprochée ou équivalent issu des forces</li>
+          <li>Anglais opérationnel minimum ; autre langue selon l'affectation</li>
+          <li>Discrétion, rigueur au brief, usage encadré de la force</li>
+          <li>Disponibilité pour déplacements et astreintes selon le planning mission</li>
+        </ul>
+      </div>
+      <aside class="recruit-panel">
+        <p class="recruit-panel-title">Candidature</p>
+        <p>
+          Adresser CV détaillé, lettre de motivation et copies des titres à l'adresse ci-dessous. Les dossiers incomplets ne sont pas instruits.
+        </p>
+        <p>
+          <strong style="color: var(--text-pri); font-weight: 500;">Email :</strong>
+          <a class="mail" href="mailto:recrutement@bluewardgroup.com?subject=Candidature%20%E2%80%94%20agent%20de%20protection">recrutement@bluewardgroup.com</a>
+        </p>
+        <p class="recruit-note">Objet du message : « Candidature — agent de protection ».</p>
+        <a class="recruit-btn" href="#contact">Accéder au formulaire de contact</a>
+      </aside>
+    </div>
+  </section>
+
   <section class="section reveal" id="contact">
     <div class="container contact-grid">
       <div class="contact-text">
@@ -814,6 +929,7 @@
             <option>Securisation d'evenement</option>
             <option>Securite sur site</option>
             <option>Conseil strategique</option>
+            <option>Candidature recrutement (agent de protection)</option>
             <option>Autre</option>
           </select>
         </div>
@@ -834,6 +950,7 @@
           <p>Navigation rapide</p>
           <a href="#groupe">Le Groupe</a>
           <a href="#presence">Présence</a>
+          <a href="#recrutement">Recrutement</a>
           <a href="#entites">Blue Ward Advisory</a>
           <a href="#entites">Blue Ward Security — Événementiel</a>
           <a href="#entites">Blue Ward Security - Site</a>
