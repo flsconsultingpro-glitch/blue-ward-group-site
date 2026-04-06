@@ -289,35 +289,20 @@
       border-left-color: var(--gold);
       border-left-width: 2px;
     }
-    .entity-head {
-      display: flex;
-      gap: 22px;
-      align-items: flex-start;
-      margin-bottom: 18px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--border);
-    }
-    .entity-num {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 52px;
-      font-weight: 300;
-      line-height: 1;
-      color: var(--muted);
-      flex-shrink: 0;
-      min-width: 72px;
-    }
     .entity-card h3 {
       font-family: "Cormorant Garamond", serif;
       font-size: 22px;
       font-weight: 400;
-      margin-bottom: 6px;
+      margin: 0 0 8px;
       letter-spacing: 0.02em;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
     }
     .entity-tag {
       color: var(--text-sec);
       font-size: 13px;
       letter-spacing: 0.06em;
-      margin: 0;
+      margin: 0 0 18px;
     }
     .entity-card p { color: var(--text-sec); margin-bottom: 0; line-height: 1.65; }
 
@@ -684,7 +669,7 @@
       <a class="brand" href="#hero">BLUE WARD GROUP</a>
       <nav class="desktop-links">
         <a href="#groupe">Le Groupe</a>
-        <a href="#entites">Entités</a>
+        <a href="#entites">Filiales</a>
         <a href="#expertise">Expertise</a>
         <a href="#presence">Présence</a>
         <a href="#recrutement">Recrutement</a>
@@ -698,7 +683,7 @@
   <aside class="mobile-menu" id="mobileMenu">
     <nav>
       <a href="#groupe">Le Groupe</a>
-      <a href="#entites">Entités</a>
+      <a href="#entites">Filiales</a>
       <a href="#expertise">Expertise</a>
       <a href="#presence">Présence</a>
       <a href="#recrutement">Recrutement</a>
@@ -739,47 +724,27 @@
 
   <section class="section reveal" id="entites">
     <div class="container">
-      <p class="label">Entités</p>
-      <h2>Les quatre entités du groupe</h2>
+      <p class="label">Le groupe</p>
+      <h2>Nos filiales</h2>
       <div class="entities-grid">
         <article class="entity-card reveal">
-          <div class="entity-head">
-            <span class="entity-num">01</span>
-            <div>
-              <h3>BLUE WARD ADVISORY</h3>
-              <p class="entity-tag">Conseil en stratégie de sûreté</p>
-            </div>
-          </div>
+          <h3>BLUE WARD ADVISORY</h3>
+          <p class="entity-tag">Conseil en stratégie de sûreté</p>
           <p>Analyse géopolitique, cartographie des risques, conception de dispositifs institutionnels. Pour les États, les ambassades et les organisations dont les décisions ont des conséquences réelles.</p>
         </article>
         <article class="entity-card reveal">
-          <div class="entity-head">
-            <span class="entity-num">02</span>
-            <div>
-              <h3>BLUE WARD SECURITY / ÉVÉNEMENTIEL</h3>
-              <p class="entity-tag">Sécurité événementielle</p>
-            </div>
-          </div>
+          <h3>BLUE WARD SECURITY / ÉVÉNEMENTIEL</h3>
+          <p class="entity-tag">Sécurité événementielle</p>
           <p>Galas, cérémonies, dîners officiels, événements privés à audience sensible. Intégration discrète, maîtrise du protocole, gestion des accès et des flux sans rupture de format.</p>
         </article>
         <article class="entity-card reveal">
-          <div class="entity-head">
-            <span class="entity-num">03</span>
-            <div>
-              <h3>BLUE WARD SECURITY / SITE</h3>
-              <p class="entity-tag">Protection sur site</p>
-            </div>
-          </div>
+          <h3>BLUE WARD SECURITY / SITE</h3>
+          <p class="entity-tag">Protection sur site</p>
           <p>Résidences, propriétés de prestige, sites d'entreprise. Évaluation du dispositif existant, déploiement d'agents qualifiés, coordination avec les systèmes techniques en place.</p>
         </article>
         <article class="entity-card reveal">
-          <div class="entity-head">
-            <span class="entity-num">04</span>
-            <div>
-              <h3>BLUE WARD RISK MANAGEMENT</h3>
-              <p class="entity-tag">Protection de personnes</p>
-            </div>
-          </div>
+          <h3>BLUE WARD RISK MANAGEMENT</h3>
+          <p class="entity-tag">Protection de personnes</p>
           <p>Protection rapprochée civile ou armée selon le niveau de menace réel. Dirigeants exposés, personnalités en déplacement, ressortissants en zone hostile. Évaluation préalable. Protocoles adaptés.</p>
         </article>
       </div>
