@@ -3,1193 +3,497 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blue Ward Group | Securite privee internationale</title>
-  <meta name="description" content="Blue Ward Group. Gestion des risques et protection globale. Analyse de la menace, déploiement opérationnel, France et international.">
-  <meta property="og:title" content="Blue Ward Group">
+  <title>Blueward Group | Sûreté stratégique et protection</title>
+  <meta name="description" content="Blueward Group — structure française spécialisée en analyse des risques, sûreté stratégique et protection d'intérêts sensibles.">
+  <meta property="og:title" content="Blueward Group">
   <meta property="og:description" content="Anticiper la menace. Protéger ce qui compte.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1431274172761-fca41d870e5a?w=1400&q=85&auto=format&fit=crop&grayscale">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1400&q=90&auto=format&fit=crop">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --black: #0D1117;
-      --deep: #10141A;
-      --surface: #161C24;
-      --border: #1E2530;
-      --muted: #2E3744;
-      --text-sec: #7A8494;
-      --text-pri: #E2E6EE;
-      --white: #F0F2F5;
-      --gold: #C4922A;
-      --gold-light: #D4A84B;
-      --accent: #1A3355;
-      --max: 1280px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: "DM Sans", Arial, sans-serif;
-      color: var(--text-pri);
-      background: linear-gradient(180deg, var(--black), var(--deep));
-      overflow-x: hidden;
-      cursor: default;
-    }
-    ::selection { color: var(--gold-light); background: #151a22; }
-    ::-webkit-scrollbar { width: 8px; height: 8px; }
-    ::-webkit-scrollbar-track { background: #101319; }
-    ::-webkit-scrollbar-thumb { background: var(--border); }
-    a, button, .entity-card, .expert-row, input, textarea, select { transition: all 0.25s ease; }
-
-    .container { width: min(var(--max), 92%); margin: 0 auto; }
-    .section { padding: 120px 0; }
-    .label {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 11px;
-      margin-bottom: 16px;
-    }
-    h2 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2rem, 4vw, 3.1rem);
-      font-weight: 400;
-      margin-bottom: 22px;
-      line-height: 1.1;
-    }
-    .intro { color: var(--text-sec); max-width: 820px; }
-
-    .topbar {
-      position: fixed;
-      inset: 0 0 auto 0;
-      z-index: 60;
-      background: transparent;
-      border-bottom: 1px solid transparent;
-    }
-    .topbar.scrolled { background: rgba(16, 20, 26, 0.97); border-bottom-color: var(--border); }
-    .nav {
-      min-height: 82px;
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: 10px;
-    }
-    .brand {
-      color: var(--white);
-      font-family: "Cormorant Garamond", serif;
-      font-size: 28px;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      font-weight: 500;
-      justify-self: start;
-    }
-    .desktop-links {
-      display: flex;
-      gap: 28px;
-      justify-self: center;
-    }
-    .desktop-links a {
-      color: var(--text-sec);
-      text-decoration: none;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-    }
-    .desktop-links a:hover { color: var(--gold); }
-    .cta {
-      justify-self: end;
-      text-decoration: none;
-      color: var(--gold);
-      border: 1px solid var(--gold);
-      padding: 10px 16px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-    .cta:hover { background: var(--gold); color: #0d1117; }
-    .burger {
-      display: none;
-      justify-self: end;
-      width: 42px;
-      height: 42px;
-      border: 1px solid var(--border);
-      background: transparent;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-pri);
-      cursor: pointer;
-    }
-    .burger span {
-      display: block;
-      width: 18px;
-      height: 2px;
-      background: var(--text-pri);
-      position: relative;
-    }
-    .burger span::before, .burger span::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: var(--text-pri);
-    }
-    .burger span::before { top: -6px; }
-    .burger span::after { top: 6px; }
-    .mobile-menu {
-      position: fixed;
-      inset: 0;
-      z-index: 50;
-      background: rgba(10, 10, 10, 0.97);
-      display: grid;
-      place-items: center;
-      opacity: 0;
-      visibility: hidden;
-    }
-    .mobile-menu.open { opacity: 1; visibility: visible; }
-    .mobile-menu nav { display: grid; gap: 18px; text-align: center; }
-    .mobile-menu a {
-      color: var(--text-pri);
-      text-decoration: none;
-      font-size: 18px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-    .mobile-menu a:hover { color: var(--gold); }
-
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      background: #0d1117;
-    }
-    /* Vue large sur Paris (panorama urbain), désaturée + overlay pour le contraste du texte */
-    .hero-photo {
-      position: absolute;
-      inset: 0;
-      background-color: #0d1117;
-      background-image:
-        linear-gradient(
-          to bottom,
-          rgba(13, 17, 23, 0.78) 0%,
-          rgba(13, 17, 23, 0.42) 45%,
-          rgba(13, 17, 23, 0.94) 100%
-        ),
-        radial-gradient(ellipse 100% 80% at 50% 30%, rgba(13, 17, 23, 0.15) 0%, transparent 55%),
-        url("https://images.unsplash.com/photo-1431274172761-fca41d870e5a?w=2400&q=85&auto=format&fit=crop&grayscale");
-      background-size: cover;
-      background-position: center 28%;
-    }
-    .hero-inner {
-      margin-top: 76px;
-      position: relative;
-      z-index: 2;
-    }
-    .hero-kicker {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      font-size: 11px;
-      margin-bottom: 14px;
-      opacity: 0;
-      animation: fadeUp 0.8s ease-out forwards;
-    }
-    h1 {
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 300;
-      font-size: clamp(42px, 7vw, 72px);
-      line-height: 1.08;
-      max-width: 860px;
-      margin-bottom: 16px;
-      opacity: 0;
-      animation: fadeUp 0.8s ease-out 0.14s forwards;
-    }
-    .hero p.hero-lead {
-      max-width: 720px;
-      color: var(--text-sec);
-      font-weight: 300;
-      font-size: 18px;
-      opacity: 0;
-      animation: fadeUp 0.8s ease-out 0.26s forwards;
-    }
-    .hero-actions {
-      margin-top: 28px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp 0.8s ease-out 0.4s forwards;
-    }
-    .btn {
-      border: 1px solid var(--border);
-      color: var(--text-pri);
-      text-decoration: none;
-      padding: 12px 18px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 11px;
-    }
-    .btn.gold {
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-    .btn.gold:hover { background: var(--gold); color: #0d1117; }
-    .btn:hover { border-color: var(--gold); color: var(--gold-light); }
-    .scroll-indicator {
-      position: absolute;
-      left: 50%;
-      bottom: 20px;
-      transform: translateX(-50%);
-      color: var(--text-sec);
-      font-size: 22px;
-      animation: bounce 1.3s infinite;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 60% 40%;
-      gap: 34px;
-      align-items: start;
-    }
-    .about-text p { color: var(--text-sec); margin-bottom: 14px; }
-    .about-media {
-      position: relative;
-      border: 1px solid var(--border);
-      min-height: 520px;
-      background: center / cover no-repeat url("https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=900&q=80&auto=format&fit=crop&grayscale");
-    }
-    .about-media::before {
-      content: "";
-      position: absolute;
-      left: -1px;
-      top: 32px;
-      width: 2px;
-      height: 60px;
-      background: var(--gold);
-    }
-
-    .entities-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-top: 26px;
-    }
-    .entity-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 36px;
-      position: relative;
-      border-left: 1px solid var(--border);
-    }
-    .entity-card:hover {
-      transform: translateY(-4px);
-      border-left-color: var(--gold);
-      border-left-width: 2px;
-    }
-    .entity-card h3 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 22px;
-      font-weight: 400;
-      margin: 0 0 8px;
-      letter-spacing: 0.02em;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--border);
-    }
-    .entity-tag {
-      color: var(--text-sec);
-      font-size: 13px;
-      letter-spacing: 0.06em;
-      margin: 0 0 18px;
-    }
-    .entity-card p { color: var(--text-sec); margin-bottom: 0; line-height: 1.65; }
-
-    .expert-list { margin-top: 40px; max-width: 880px; }
-    .expert-row {
-      padding: 32px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .expert-row:first-of-type { padding-top: 0; }
-    .expert-row:last-of-type { border-bottom: none; padding-bottom: 0; }
-    .expert-row strong {
-      display: block;
-      font-size: 15px;
-      font-weight: 500;
-      margin-bottom: 10px;
-      color: var(--text-pri);
-    }
-    .expert-row p { color: var(--text-sec); font-size: 15px; font-weight: 300; line-height: 1.65; }
-
-    .stats-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-top: 22px;
-    }
-    .stat {
-      border: 1px solid var(--border);
-      padding: 24px;
-      background: rgba(0,0,0,0.14);
-    }
-    .stat-value {
-      font-family: "Cormorant Garamond", serif;
-      color: var(--gold);
-      font-size: clamp(52px, 7vw, 72px);
-      line-height: 1;
-      margin-bottom: 10px;
-      font-weight: 300;
-    }
-    .stat-title { font-size: 16px; margin-bottom: 8px; }
-    .stat p { color: var(--text-sec); font-size: 14px; }
-
-    .section-map {
-      padding: 120px 0 80px;
-      background: #0d1117;
-    }
-    .section-map .section-map-head {
-      text-align: center;
-      max-width: 720px;
-      margin: 0 auto 40px;
-    }
-    .section-map .section-label {
-      display: block;
-      color: var(--gold);
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-    .section-map .section-map-head h2 { margin-bottom: 16px; }
-    .section-map .section-intro {
-      color: var(--text-sec);
-      font-size: 16px;
-      font-weight: 300;
-      line-height: 1.65;
-      margin: 0 auto;
-    }
-    .map-wrapper {
-      position: relative;
-      width: 100%;
-      max-width: 1400px;
-      margin: 48px auto 32px;
-      overflow: hidden;
-      border-top: 0.5px solid #1e2530;
-      border-bottom: 0.5px solid #1e2530;
-    }
-    #world-map {
-      width: 100%;
-      height: 520px;
-      cursor: grab;
-      background: #0d1117;
-    }
-    #world-map:active { cursor: grabbing; }
-    #world-map svg { display: block; width: 100%; height: 100%; }
-    .country {
-      fill: #1a2235;
-      stroke: #252e40;
-      stroke-width: 0.5px;
-      transition: fill 0.2s ease;
-    }
-    .country:hover { fill: #1e2d45; }
-    .country.country--active { fill: #1e2d45; }
-    .intervention-point { cursor: pointer; }
-    .intervention-point .dot {
-      fill: #c4922a;
-      opacity: 0.95;
-      transition: r 0.2s ease;
-    }
-    .intervention-point:hover .dot { r: 6px; }
-    .intervention-point .pulse {
-      fill: none;
-      stroke: #c4922a;
-      stroke-width: 1.5px;
-      opacity: 0.85;
-      animation: pulse-ring 2.5s ease-out infinite;
-    }
-    @keyframes pulse-ring {
-      0% { r: 4px; opacity: 0.85; }
-      100% { r: 18px; opacity: 0; }
-    }
-    .map-tooltip {
-      position: absolute;
-      display: none;
-      flex-direction: column;
-      gap: 4px;
-      background: #161c24;
-      border-left: 2px solid #c4922a;
-      padding: 10px 14px;
-      pointer-events: none;
-      min-width: 200px;
-      max-width: 280px;
-      z-index: 20;
-      transition: opacity 0.2s ease;
-    }
-    .map-tooltip.visible { display: flex; opacity: 1; }
-    .tooltip-city {
-      font-family: "DM Sans", sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #c4922a;
-    }
-    .tooltip-country { display: none; }
-    .tooltip-label {
-      font-family: "DM Sans", sans-serif;
-      font-size: 12px;
-      color: #7a8494;
-      line-height: 1.4;
-    }
-    .tooltip-missions {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 17px;
-      font-weight: 300;
-      color: #e2e6ee;
-      margin-top: 2px;
-    }
-    .map-controls {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      z-index: 15;
-    }
-    .map-controls button {
-      width: 32px;
-      height: 32px;
-      background: #161c24;
-      border: 0.5px solid #1e2530;
-      color: #7a8494;
-      font-size: 16px;
-      line-height: 1;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: color 0.2s, border-color 0.2s;
-      font-family: "DM Sans", sans-serif;
-    }
-    .map-controls button:hover {
-      color: #c4922a;
-      border-color: #c4922a;
-    }
-    .map-footer {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px 48px;
-      justify-content: center;
-      padding: 36px 0 0;
-      font-family: "DM Sans", sans-serif;
-      font-size: 13px;
-      color: #7a8494;
-      letter-spacing: 0.04em;
-    }
-    .map-footer strong {
-      color: #c4922a;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 22px;
-      font-weight: 300;
-      margin-right: 6px;
-    }
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    .recruit-section {
-      border-top: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(22, 28, 36, 0.35) 0%, transparent 100%);
-    }
-    .recruit-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 40px;
-      align-items: start;
-    }
-    .recruit-list {
-      margin-top: 26px;
-      list-style: none;
-      padding: 0;
-    }
-    .recruit-list li {
-      padding-left: 18px;
-      position: relative;
-      margin-bottom: 14px;
-      color: var(--text-sec);
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.6;
-    }
-    .recruit-list li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.55em;
-      width: 6px;
-      height: 1px;
-      background: var(--gold);
-    }
-    .recruit-panel {
-      border: 1px solid var(--border);
-      padding: 28px 26px;
-      background: var(--surface);
-    }
-    .recruit-panel-title {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 14px;
-    }
-    .recruit-panel p {
-      color: var(--text-sec);
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.65;
-      margin-bottom: 14px;
-    }
-    .recruit-panel a.mail {
-      color: var(--gold-light);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(196, 146, 42, 0.35);
-    }
-    .recruit-panel a.mail:hover {
-      color: var(--gold);
-      border-bottom-color: var(--gold);
-    }
-    .recruit-note {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 0;
-    }
-    .recruit-btn {
-      display: inline-block;
-      margin-top: 20px;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      text-decoration: none;
-      padding: 12px 18px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 11px;
-    }
-    .recruit-btn:hover {
-      background: var(--gold);
-      color: #0d1117;
-    }
-
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .contact-text p { color: var(--text-sec); margin-bottom: 10px; }
-    .contact-meta { margin-top: 20px; line-height: 1.8; }
-    .contact-meta strong { color: var(--text-pri); }
-    form { border: 1px solid var(--border); padding: 20px; background: var(--surface); }
-    .field { margin-bottom: 12px; }
-    .field label {
-      display: block;
-      margin-bottom: 7px;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-sec);
-    }
-    .field input, .field textarea, .field select {
-      width: 100%;
-      background: #141a22;
-      border: 1px solid var(--border);
-      color: var(--text-pri);
-      padding: 11px;
-      font: inherit;
-      outline: none;
-    }
-    .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--gold); }
-    .field textarea { min-height: 120px; resize: vertical; }
-    .submit {
-      width: 100%;
-      border: 1px solid var(--gold);
-      background: var(--gold);
-      color: #0e1218;
-      text-transform: uppercase;
-      letter-spacing: 0.13em;
-      font-size: 11px;
-      padding: 12px;
-      cursor: pointer;
-    }
-    .submit:hover { opacity: 0.85; }
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 54px 0 24px;
-      background: var(--black);
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 18px;
-      margin-bottom: 26px;
-    }
-    .foot-title {
-      font-family: "Cormorant Garamond", serif;
-      color: var(--white);
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
-    .foot-col p, .foot-col a {
-      color: var(--text-sec);
-      text-decoration: none;
-      display: block;
-      margin-bottom: 6px;
-      font-size: 14px;
-    }
-    .foot-col a:hover { color: var(--gold); }
-    .copyright {
-      text-align: center;
-      color: #737d8f;
-      font-size: 13px;
-      border-top: 1px solid var(--border);
-      padding-top: 16px;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translate(-50%, 0); }
-      50% { transform: translate(-50%, 6px); }
-    }
-
-    @media (max-width: 1199px) {
-      .section { padding: 90px 0; }
-    }
-    @media (max-width: 768px) {
-      .section { padding: 80px 0; }
-      .nav { grid-template-columns: 1fr auto; }
-      .desktop-links, .cta { display: none; }
-      .burger { display: inline-flex; }
-      .about-grid, .entities-grid, .recruit-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; }
-      #world-map { height: 280px; }
-      .map-footer { flex-direction: column; align-items: center; gap: 16px; text-align: center; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-      .about-media { min-height: 360px; }
-      .hero p.hero-lead { font-size: 16px; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar" id="topbar">
-    <div class="container nav">
-      <a class="brand" href="#hero">BLUE WARD GROUP</a>
-      <nav class="desktop-links">
-        <a href="#groupe">Le Groupe</a>
-        <a href="#entites">Filiales</a>
-        <a href="#expertise">Expertise</a>
-        <a href="#zones">Zones</a>
-        <a href="#recrutement">Recrutement</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <a class="cta" href="#contact">Prendre contact</a>
-      <button class="burger" id="burger" aria-label="Menu"><span></span></button>
-    </div>
-  </header>
+  <nav id="nav">
+    <a href="#hero" class="nav-logo">
+      <svg viewBox="0 0 44 34" width="36" height="28" fill="none" aria-hidden="true">
+        <path d="M0 0 L8 0 L15 22 L22 8 L29 22 L36 0 L44 0 L30 34 L22 18 L14 34 Z" fill="currentColor"/>
+      </svg>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">BLUEWARD</span>
+        <span class="nav-logo-sub">GROUP</span>
+      </div>
+    </a>
 
-  <aside class="mobile-menu" id="mobileMenu">
-    <nav>
-      <a href="#groupe">Le Groupe</a>
-      <a href="#entites">Filiales</a>
-      <a href="#expertise">Expertise</a>
-      <a href="#zones">Zones</a>
-      <a href="#recrutement">Recrutement</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </aside>
+    <ul class="nav-links">
+      <li><a href="#about">À propos</a></li>
+      <li class="has-dropdown">
+        <a href="#filiales">Nos filiales</a>
+        <div class="nav-dropdown">
+          <a href="#filiales"><strong>BLUEWARD</strong> Advisory<span>Conseil en sûreté stratégique</span></a>
+          <a href="#filiales"><strong>BLUEWARD</strong> Security — Événementiel<span>Sécurité événementielle</span></a>
+          <a href="#filiales"><strong>BLUEWARD</strong> Security — Site<span>Protection sur site</span></a>
+          <a href="#filiales"><strong>BLUEWARD</strong> Risk Management<span>Protection rapprochée</span></a>
+        </div>
+      </li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#zones">Zones d'intervention</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <a href="#contact" class="nav-cta">Prendre contact</a>
+    <button type="button" class="nav-burger" id="navBurger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#filiales">Nos filiales</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#zones">Zones d'intervention</a></li>
+      <li><a href="#track">Track record</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
   <section class="hero" id="hero">
-    <div class="hero-photo" aria-hidden="true"></div>
-    <div class="container hero-inner">
-      <p class="hero-kicker">GESTION DES RISQUES &amp; PROTECTION GLOBALE</p>
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">GESTION DES RISQUES &amp; PROTECTION GLOBALE</span>
       <h1>Anticiper la menace.<br>Protéger ce qui compte.</h1>
-      <p class="hero-lead">
-        Blue Ward Group structure des solutions de protection pour les environnements à risque — de l'analyse de la menace
-        au déploiement opérationnel, en France et à l'international.
+      <p class="hero-sub">
+        Structure française spécialisée en sûreté stratégique et protection
+        d'intérêts sensibles — en France et à l'international.
       </p>
+      <p class="hero-tagline">Discrétion, réactivité et fiabilité.</p>
       <div class="hero-actions">
-        <a class="btn gold" href="#contact">Prendre contact</a>
-        <a class="btn" href="#groupe">Notre approche</a>
+        <a href="#contact" class="btn-primary">Prendre contact</a>
+        <a href="#about" class="btn-ghost">Notre approche</a>
       </div>
     </div>
-    <div class="scroll-indicator">↓</div>
-  </section>
-
-  <section class="section reveal" id="groupe">
-    <div class="container about-grid">
-      <div class="about-text">
-        <p class="label">À propos</p>
-        <h2>Un groupe structuré autour d'une réalité : la menace existe.</h2>
-        <p>Certains environnements ne tolèrent pas l'approximation. Blue Ward Group a été fondé pour opérer dans ces environnements.</p>
-        <p>Le groupe réunit des entités spécialisées dans l'évaluation du risque, la protection des personnes et la sécurisation des opérations sensibles. Il intervient auprès de gouvernements, d'institutions internationales, de familles patrimoniales et de dirigeants exposés — en France et dans plus de 30 pays.</p>
-        <p>Depuis sa création, le groupe a conduit plus de 1 000 missions de protection de délégations étrangères, assuré la sécurité de chefs d'État en déplacement officiel, de membres de familles royales, et déployé des dispositifs lors d'événements internationaux majeurs — Jeux Olympiques, Coupe du Monde FIFA, sommets diplomatiques.</p>
-        <p>Le groupe ne revendique pas d'être le meilleur. Il revendique d'avoir été là quand ça comptait.</p>
+    <div class="hero-scroll" aria-hidden="true"><span></span></div>
+    <div class="hero-trust">
+      <div class="hero-trust-inner">
+        <span>1 000+ délégations protégées</span>
+        <span class="trust-sep">·</span>
+        <span>30+ pays</span>
+        <span class="trust-sep">·</span>
+        <span>Agréé CNAPS</span>
+        <span class="trust-sep">·</span>
+        <span>Astreinte 24/7</span>
       </div>
-      <div class="about-media" aria-label="Photo atmospherique"></div>
     </div>
   </section>
 
-  <section class="section reveal" id="entites">
+  <section id="about" class="section-light">
     <div class="container">
-      <p class="label">Le groupe</p>
-      <h2>Nos filiales</h2>
-      <div class="entities-grid">
-        <article class="entity-card reveal">
-          <h3>BLUE WARD ADVISORY</h3>
-          <p class="entity-tag">Conseil en stratégie de sûreté</p>
-          <p>Analyse géopolitique, cartographie des risques, conception de dispositifs institutionnels. Pour les États, les ambassades et les organisations dont les décisions ont des conséquences réelles.</p>
-        </article>
-        <article class="entity-card reveal">
-          <h3>BLUE WARD SECURITY / ÉVÉNEMENTIEL</h3>
-          <p class="entity-tag">Sécurité événementielle</p>
-          <p>Galas, cérémonies, dîners officiels, événements privés à audience sensible. Intégration discrète, maîtrise du protocole, gestion des accès et des flux sans rupture de format.</p>
-        </article>
-        <article class="entity-card reveal">
-          <h3>BLUE WARD SECURITY / SITE</h3>
-          <p class="entity-tag">Protection sur site</p>
-          <p>Résidences, propriétés de prestige, sites d'entreprise. Évaluation du dispositif existant, déploiement d'agents qualifiés, coordination avec les systèmes techniques en place.</p>
-        </article>
-        <article class="entity-card reveal">
-          <h3>BLUE WARD RISK MANAGEMENT</h3>
-          <p class="entity-tag">Protection de personnes</p>
-          <p>Protection rapprochée civile ou armée selon le niveau de menace réel. Dirigeants exposés, personnalités en déplacement, ressortissants en zone hostile. Évaluation préalable. Protocoles adaptés.</p>
-        </article>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <span class="label">— À PROPOS —</span>
+          <h2>Une structure dédiée à la protection d'intérêts sensibles.</h2>
+          <p class="lead">
+            BlueWard Group est une structure française dédiée à l'analyse des risques,
+            à la sûreté stratégique et à la protection d'intérêts sensibles.
+          </p>
+          <p>
+            Le groupe intervient auprès d'institutions souveraines, d'organisations
+            internationales, de familles patrimoniales et de dirigeants exposés —
+            en France et dans plus de 30 pays.
+          </p>
+          <p>
+            Chaque mission repose sur une évaluation préalable rigoureuse,
+            un dispositif calibré sur la réalité de la menace,
+            et une exécution coordonnée par des équipes qualifiées.
+          </p>
+          <a href="#contact" class="link-arrow">Prendre contact →</a>
+        </div>
+        <div class="about-aside reveal" data-delay="1">
+          <div class="valeur-list">
+            <div class="valeur-item">
+              <span class="valeur-num">01</span>
+              <div>
+                <h4>Discrétion</h4>
+                <p>Protection stricte des informations, des données et des identités sensibles.</p>
+              </div>
+            </div>
+            <div class="valeur-item">
+              <span class="valeur-num">02</span>
+              <div>
+                <h4>Exigence</h4>
+                <p>Préparation méthodique, analyse approfondie et exécution maîtrisée.</p>
+              </div>
+            </div>
+            <div class="valeur-item">
+              <span class="valeur-num">03</span>
+              <div>
+                <h4>Sûreté</h4>
+                <p>Méthodes éprouvées, discipline opérationnelle et contrôle permanent.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section reveal" id="expertise">
+  <section id="filiales" class="section-offwhite">
     <div class="container">
-      <p class="label">Expertise</p>
-      <h2>Domaines d'intervention</h2>
-      <p class="intro">Interventions dans des contextes où le risque est documenté, avec des profils d'exposition variables.</p>
-      <div class="expert-list">
-        <div class="expert-row reveal"><strong>Protection armée</strong><p>Agents habilités lorsque le niveau de menace le justifie et que le cadre légal le permet.</p></div>
-        <div class="expert-row reveal"><strong>Opérations internationales</strong><p>Déploiements en Europe, Moyen-Orient, Afrique et Asie.</p></div>
-        <div class="expert-row reveal"><strong>Délégations officielles</strong><p>Accueil et escorte de chefs d'État et de corps diplomatiques.</p></div>
-        <div class="expert-row reveal"><strong>Familles royales et patrimoines concentrés</strong><p>Dispositifs lorsque l'exposition est durable et mesurable.</p></div>
-        <div class="expert-row reveal"><strong>Événements à fort enjeu</strong><p>Jeux Olympiques, Coupe du Monde FIFA, sommets diplomatiques.</p></div>
-        <div class="expert-row reveal"><strong>Gestion de crise</strong><p>Protocoles d'urgence et extraction lorsque le contexte l'exige.</p></div>
-        <div class="expert-row reveal"><strong>Contre-surveillance</strong><p>Détection de filature, analyse comportementale, appui TSCM.</p></div>
-        <div class="expert-row reveal"><strong>Transport sécurisé</strong><p>Flotte banalisée ou blindée, conducteurs briefés sur l'itinéraire.</p></div>
-        <div class="expert-row reveal"><strong>Coordination interinstitutionnelle</strong><p>Liaison avec autorités, préfectures, représentations d'État.</p></div>
+      <span class="label">— NOS FILIALES —</span>
+      <h2>Notre spectre d'intervention</h2>
+      <div class="filiales-grid">
+        <div class="filiale-card reveal">
+          <div class="filiale-img">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" width="600" height="180">
+          </div>
+          <div class="filiale-body">
+            <div class="filiale-num">01</div>
+            <div class="filiale-name">
+              <span class="filiale-brand">BLUEWARD</span>
+              <span class="filiale-complement">Advisory</span>
+            </div>
+            <div class="filiale-sep"></div>
+            <p>Accompagnement d'États, d'ambassades et d'organisations internationales dans la définition de leur stratégie de protection globale. Analyse géopolitique, audit de vulnérabilité, conseil en gestion de crise.</p>
+            <span class="filiale-tag">Gouvernements · Ambassades · Institutions</span>
+          </div>
+        </div>
+
+        <div class="filiale-card reveal" data-delay="1">
+          <div class="filiale-img">
+            <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" width="600" height="180">
+          </div>
+          <div class="filiale-body">
+            <div class="filiale-num">02</div>
+            <div class="filiale-name">
+              <span class="filiale-brand">BLUEWARD</span>
+              <span class="filiale-complement">Security — Événementiel</span>
+            </div>
+            <div class="filiale-sep"></div>
+            <p>Dispositifs de sécurité pour galas, soirées mondaines, cérémonies officielles et événements privés à audience sensible. Agents corporate en costume, maîtrise du protocole, gestion des accès.</p>
+            <span class="filiale-tag">Galas · Soirées privées · Fashion Week</span>
+          </div>
+        </div>
+
+        <div class="filiale-card reveal" data-delay="1">
+          <div class="filiale-img">
+            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" width="600" height="180">
+          </div>
+          <div class="filiale-body">
+            <div class="filiale-num">03</div>
+            <div class="filiale-name">
+              <span class="filiale-brand">BLUEWARD</span>
+              <span class="filiale-complement">Security — Site</span>
+            </div>
+            <div class="filiale-sep"></div>
+            <p>Sécurisation permanente ou ponctuelle de résidences privées, propriétés de prestige et sites d'entreprise. Évaluation du dispositif existant, déploiement d'agents qualifiés, coordination technique.</p>
+            <span class="filiale-tag">Résidences · Sites corporate · Propriétés</span>
+          </div>
+        </div>
+
+        <div class="filiale-card reveal" data-delay="2">
+          <div class="filiale-img">
+            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" width="600" height="180">
+          </div>
+          <div class="filiale-body">
+            <div class="filiale-num">04</div>
+            <div class="filiale-name">
+              <span class="filiale-brand">BLUEWARD</span>
+              <span class="filiale-complement">Risk Management</span>
+            </div>
+            <div class="filiale-sep"></div>
+            <p>Protection rapprochée civile ou armée selon le niveau de menace réel. Dirigeants exposés, personnalités en déplacement, ressortissants en zone hostile. Évaluation préalable. Protocoles adaptés.</p>
+            <span class="filiale-tag">Dirigeants · VIP · Délégations · Zones de crise</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section stats-section reveal" id="track">
+  <section id="expertise" class="section-light">
     <div class="container">
-      <p class="label">Track record</p>
-      <div class="stats-grid">
-        <article class="stat reveal"><div class="stat-value" data-count="1000" data-suffix="+">0</div><h4 class="stat-title">Délégations protégées</h4><p>Missions de protection de délégations officielles étrangères conduites en France et à l'international.</p></article>
-        <article class="stat reveal"><div class="stat-value" data-count="30" data-suffix="+">0</div><h4 class="stat-title">Pays d'intervention</h4><p>Déploiements opérationnels en Europe, Moyen-Orient, Afrique et Asie.</p></article>
-        <article class="stat reveal"><div class="stat-value" data-display="247">24 / 7</div><h4 class="stat-title">Astreinte opérationnelle</h4><p>Cellule d'activation permanente pour les situations qui n'attendent pas.</p></article>
-        <article class="stat reveal"><div class="stat-value" data-count="0" data-suffix="">0</div><h4 class="stat-title">Incident majeur non anticipé</h4><p>L'indicateur le plus important n'est pas visible. C'est ce qui ne s'est pas produit.</p></article>
+      <span class="label">— EXPERTISE —</span>
+
+      <div class="expertise-phrase reveal">
+        Un seul interlocuteur. Une coordination complète. Une exécution maîtrisée.
+      </div>
+
+      <div class="expertise-bloc reveal">
+        <div class="expertise-bloc-header">
+          <div class="bloc-num">01</div>
+          <div>
+            <h2>Protection des personnes</h2>
+            <p>Dispositifs de protection rapprochée calibrés sur le niveau de menace réel — APR, APRA, contre-ciblage, déplacements, extraction.</p>
+          </div>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-img"><img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=700&q=80&auto=format&fit=crop" alt="" loading="lazy" width="700" height="260"></div>
+            <div class="service-info">
+              <h3>Protection rapprochée (APR / APRA)</h3>
+              <p>Agents civils ou armés selon l'exposition. Itinéraires sécurisés, liaison permanente, protocoles adaptés au profil de menace.</p>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-img"><img src="https://images.unsplash.com/photo-1509822929464-92b5d6a8d1d2?w=700&q=80&auto=format&fit=crop" alt="" loading="lazy" width="700" height="260"></div>
+            <div class="service-info">
+              <h3>Contre-ciblage &amp; analyse des menaces</h3>
+              <p>Identification précoce des menaces dirigées. Analyse comportementale, surveillance discrète, anticipation.</p>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-img"><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=700&q=80&auto=format&fit=crop" alt="" loading="lazy" width="700" height="260"></div>
+            <div class="service-info">
+              <h3>Déplacements sensibles &amp; extraction</h3>
+              <p>Convois banalisés, sécurisation des itinéraires, coordination interinstitutionnelle, rapatriements sécurisés.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="expertise-sep"></div>
+
+      <div class="expertise-bloc reveal">
+        <div class="expertise-bloc-header">
+          <div class="bloc-num">02</div>
+          <div>
+            <h2>Sécurité événementielle &amp; Corporate</h2>
+            <p>Intégration discrète dans des environnements à audience sensible ou à forte visibilité protocolaire.</p>
+          </div>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-img"><img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=700&q=80&auto=format&fit=crop" alt="" loading="lazy" width="700" height="260"></div>
+            <div class="service-info">
+              <h3>Galas &amp; soirées privées</h3>
+              <p>Agents en costume, contrôle d'accès discret, gestion des flux, intégration aux équipes organisatrices.</p>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-img"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&q=80&auto=format&fit=crop" alt="" loading="lazy" width="700" height="260"></div>
+            <div class="service-info">
+              <h3>Événements corporate &amp; institutionnels</h3>
+              <p>Salons, conférences, fashion week, cérémonies officielles. Dispositifs adaptés au format et au niveau d'exposition.</p>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-img"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80&auto=format&fit=crop" alt="" loading="lazy" width="700" height="260"></div>
+            <div class="service-info">
+              <h3>Sécurité sur site &amp; résidentielle</h3>
+              <p>Protection permanente ou ponctuelle. Évaluation du dispositif existant, coordination avec les systèmes techniques.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="expertise-sep"></div>
+
+      <div class="expertise-bloc reveal">
+        <div class="expertise-bloc-header">
+          <div class="bloc-num">03</div>
+          <div>
+            <h2>Conseil stratégique &amp; Gestion des risques</h2>
+            <p>Analyse, modélisation et réponse aux menaces complexes — pour les organisations dont les décisions ont des conséquences réelles.</p>
+          </div>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-img"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=700&q=80&auto=format&fit=crop" alt="" loading="lazy" width="700" height="260"></div>
+            <div class="service-info">
+              <h3>Analyse &amp; audit des risques</h3>
+              <p>Cartographie des vulnérabilités, modélisation des scénarios, recommandations opérationnelles, audit de dispositif.</p>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-img"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=700&q=80&auto=format&fit=crop" alt="" loading="lazy" width="700" height="260"></div>
+            <div class="service-info">
+              <h3>Gestion de crise</h3>
+              <p>Protocoles d'activation, cellules de crise, coordination interinstitutionnelle. Disponibilité permanente.</p>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-img"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=700&q=80&auto=format&fit=crop" alt="" loading="lazy" width="700" height="260"></div>
+            <div class="service-info">
+              <h3>Cybersûreté &amp; renseignement</h3>
+              <p>Protection des communications sensibles, contre-espionnage numérique, enquêtes et évaluation des menaces.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="zones" class="section-map section reveal">
-    <div class="container section-map-head">
-      <span class="section-label">Zones d'intervention</span>
+  <section id="zones" class="section-dark">
+    <div class="container map-section-head">
+      <span class="label">— ZONES D'INTERVENTION —</span>
       <h2>Une présence opérationnelle mondiale</h2>
-      <p class="section-intro">
-        Le groupe déploie ses équipes dans plus de 30 pays, sur demande ou dans le cadre de missions récurrentes.
-        Chaque déploiement fait l'objet d'une évaluation préalable du contexte local.
-      </p>
+      <p>BlueWard intervient en Europe, en Afrique et au Moyen-Orient, avec des capacités de déploiement en Asie et dans les Amériques.</p>
     </div>
     <div class="map-wrapper">
-      <div id="world-map" role="img" aria-label="Carte du monde des zones d'intervention"></div>
-      <div class="map-controls">
-        <button type="button" id="zoom-in" title="Zoom avant">+</button>
-        <button type="button" id="zoom-out" title="Zoom arrière">−</button>
-        <button type="button" id="zoom-reset" title="Réinitialiser la vue">↺</button>
-      </div>
+      <div id="world-map" role="img" aria-label="Carte des zones d'intervention"></div>
       <div class="map-tooltip" id="map-tooltip" aria-hidden="true">
-        <span class="tooltip-city"></span>
-        <span class="tooltip-label"></span>
-        <span class="tooltip-missions"></span>
+        <span class="tt-city"></span>
+        <span class="tt-country"></span>
       </div>
     </div>
+    <div class="container map-cities">
+      <div class="villes-grid reveal">
+        <div class="villes-zone">
+          <span class="zone-label">Europe</span>
+          <ul>
+            <li>Paris</li><li>Londres</li><li>Genève</li><li>Monaco</li><li>Bruxelles</li><li>Rome</li><li>Madrid</li>
+          </ul>
+        </div>
+        <div class="villes-zone">
+          <span class="zone-label">Moyen-Orient</span>
+          <ul>
+            <li>Dubaï</li><li>Riyad</li><li>Doha</li><li>Abu Dhabi</li><li>Beyrouth</li>
+          </ul>
+        </div>
+        <div class="villes-zone">
+          <span class="zone-label">Afrique</span>
+          <ul>
+            <li>Abidjan</li><li>Dakar</li><li>Casablanca</li><li>Nairobi</li><li>Djibouti</li>
+          </ul>
+        </div>
+        <div class="villes-zone">
+          <span class="zone-label">Amériques &amp; Asie</span>
+          <ul>
+            <li>New York</li><li>Washington D.C.</li><li>Tokyo</li><li>Singapour</li><li>Hong Kong</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="track" class="section-dark">
     <div class="container">
-      <div class="map-footer">
-        <span><strong>30+</strong> pays couverts</span>
-        <span><strong>1 000+</strong> missions conduites</span>
-        <span><strong>5</strong> zones géographiques</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="section reveal recruit-section" id="recrutement">
-    <div class="container recruit-grid">
-      <div>
-        <p class="label">Recrutement</p>
-        <h2>Agents de protection rapprochée</h2>
-        <p class="intro">
-          Le groupe constitue des équipes pour des missions en France et à l'étranger. La sélection repose sur des critères opérationnels et sur le respect du cadre réglementaire.
-        </p>
-        <ul class="recruit-list">
-          <li>Carte professionnelle CNAPS (APR ou équivalent selon le poste) valide</li>
-          <li>Expérience en protection physique, sécurité rapprochée ou équivalent issu des forces</li>
-          <li>Anglais opérationnel minimum ; autre langue selon l'affectation</li>
-          <li>Discrétion, rigueur au brief, usage encadré de la force</li>
-          <li>Disponibilité pour déplacements et astreintes selon le planning mission</li>
-        </ul>
-      </div>
-      <aside class="recruit-panel">
-        <p class="recruit-panel-title">Candidature</p>
-        <p>
-          Adresser CV détaillé, lettre de motivation et copies des titres à l'adresse ci-dessous. Les dossiers incomplets ne sont pas instruits.
-        </p>
-        <p>
-          <strong style="color: var(--text-pri); font-weight: 500;">Email :</strong>
-          <a class="mail" href="mailto:recrutement@bluewardgroup.com?subject=Candidature%20%E2%80%94%20agent%20de%20protection">recrutement@bluewardgroup.com</a>
-        </p>
-        <p class="recruit-note">Objet du message : « Candidature — agent de protection ».</p>
-        <a class="recruit-btn" href="#contact">Accéder au formulaire de contact</a>
-      </aside>
-    </div>
-  </section>
-
-  <section class="section reveal" id="contact">
-    <div class="container contact-grid">
-      <div class="contact-text">
-        <p class="label">Contact</p>
-        <h2>Premier contact</h2>
-        <p>Toute demande adressée à Blue Ward Group est traitée sous confidentialité stricte.</p>
-        <p>Chaque dossier fait l'objet d'une lecture préalable. La réponse précise la nature possible d'une intervention.</p>
-        <p>Pour les situations urgentes, l'astreinte opérationnelle est active en continu.</p>
-        <div class="contact-meta">
-          <p><strong>Email :</strong> contact@bluewardgroup.com</p>
-          <p><strong>Telephone :</strong> +33 (0)1 XX XX XX XX</p>
-          <p><strong>Disponibilite :</strong> 24h/24 - 7j/7</p>
+      <span class="label">— TRACK RECORD —</span>
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <div class="stat-number" data-target="1000" data-suffix="+">0</div>
+          <div class="stat-label">Délégations protégées</div>
+          <p class="stat-desc">Missions de protection de délégations officielles étrangères en France et à l'international.</p>
+        </div>
+        <div class="stat-item reveal" data-delay="1">
+          <div class="stat-number" data-target="30" data-suffix="+">0</div>
+          <div class="stat-label">Pays d'intervention</div>
+          <p class="stat-desc">Déploiements opérationnels en Europe, Moyen-Orient, Afrique et Asie.</p>
+        </div>
+        <div class="stat-item reveal" data-delay="2">
+          <div class="stat-number" data-static="1">24/7</div>
+          <div class="stat-label">Astreinte opérationnelle</div>
+          <p class="stat-desc">Cellule d'activation permanente pour les situations qui n'attendent pas.</p>
+        </div>
+        <div class="stat-item reveal" data-delay="3">
+          <div class="stat-number" data-target="0" data-suffix="">0</div>
+          <div class="stat-label">Incident non anticipé</div>
+          <p class="stat-desc">Notre indicateur le plus important n'est pas visible. C'est ce qui ne s'est pas produit.</p>
         </div>
       </div>
-      <form>
-        <div class="field"><label for="nom">Nom complet *</label><input id="nom" type="text" required></div>
-        <div class="field"><label for="societe">Organisation / Societe</label><input id="societe" type="text"></div>
-        <div class="field"><label for="email">Email professionnel *</label><input id="email" type="email" required></div>
-        <div class="field"><label for="tel">Telephone</label><input id="tel" type="tel"></div>
-        <div class="field">
-          <label for="nature">Nature de la demande</label>
-          <select id="nature">
-            <option>Protection de personnes</option>
-            <option>Securisation d'evenement</option>
-            <option>Securite sur site</option>
-            <option>Conseil strategique</option>
-            <option>Candidature recrutement (agent de protection)</option>
-            <option>Autre</option>
-          </select>
-        </div>
-        <div class="field"><label for="message">Message *</label><textarea id="message" required></textarea></div>
-        <button class="submit" type="submit">Envoyer la demande</button>
-      </form>
     </div>
   </section>
 
-  <footer>
+  <section id="contact" class="section-light">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <span class="label">— CONTACT —</span>
+          <h2>Engager une première discussion.</h2>
+          <p class="lead">Toute demande adressée à BlueWard Group est traitée avec la plus stricte confidentialité.</p>
+          <p>Pour les demandes urgentes, une astreinte opérationnelle est disponible en permanence.</p>
+          <div class="contact-details">
+            <div class="contact-detail-item">
+              <span class="detail-label">Téléphone</span>
+              <a class="detail-value detail-phone" href="tel:+33761816420">+33 7 61 81 64 20</a>
+            </div>
+            <div class="contact-detail-item">
+              <span class="detail-label">Disponibilité</span>
+              <span class="detail-value">24h/24 — 7j/7</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form reveal" data-delay="1">
+          <form id="contact-form" action="#" method="post">
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label" for="nom">Nom complet *</label>
+                <input type="text" id="nom" class="form-input" name="nom" required autocomplete="name">
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="org">Organisation</label>
+                <input type="text" id="org" class="form-input" name="organisation" autocomplete="organization">
+              </div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="email">Email professionnel *</label>
+              <input type="email" id="email" class="form-input" name="email" required autocomplete="email">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="nature">Nature de la demande</label>
+              <select id="nature" class="form-input" name="nature">
+                <option value="">Sélectionner</option>
+                <option>Protection de personnes</option>
+                <option>Sécurité événementielle</option>
+                <option>Sécurité sur site</option>
+                <option>Conseil stratégique</option>
+                <option>Gestion de crise</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="message">Message</label>
+              <textarea id="message" class="form-input form-textarea" name="message" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Envoyer la demande</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer section-dark">
     <div class="container">
       <div class="footer-grid">
-        <div class="foot-col">
-          <p class="foot-title">BLUE WARD GROUP</p>
-          <p>Risque. Réponse. Confidentialité.</p>
+        <div class="footer-brand">
+          <div class="nav-logo" style="margin-bottom:16px">
+            <svg viewBox="0 0 44 34" width="32" height="24" fill="none" aria-hidden="true"><path d="M0 0 L8 0 L15 22 L22 8 L29 22 L36 0 L44 0 L30 34 L22 18 L14 34 Z" fill="currentColor"/></svg>
+            <div class="nav-logo-text">
+              <span class="nav-logo-name">BLUEWARD</span>
+              <span class="nav-logo-sub">GROUP</span>
+            </div>
+          </div>
+          <p>Structure française spécialisée en sûreté stratégique et protection d'intérêts sensibles.</p>
+          <a href="tel:+33761816420" class="footer-phone">+33 7 61 81 64 20</a>
         </div>
-        <div class="foot-col">
-          <p>Navigation rapide</p>
-          <a href="#groupe">Le Groupe</a>
-          <a href="#zones">Zones</a>
-          <a href="#recrutement">Recrutement</a>
-          <a href="#entites">Blue Ward Advisory</a>
-          <a href="#entites">Blue Ward Security — Événementiel</a>
-          <a href="#entites">Blue Ward Security - Site</a>
-          <a href="#entites">Blue Ward Risk Management</a>
-          <a href="#contact">Contact</a>
+        <div class="footer-nav">
+          <span class="footer-nav-title">Navigation</span>
+          <ul>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#filiales">Nos filiales</a></li>
+            <li><a href="#expertise">Expertise</a></li>
+            <li><a href="#zones">Zones d'intervention</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
         </div>
-        <div class="foot-col">
-          <a href="#">Mentions legales</a>
-          <a href="#">Politique de confidentialite</a>
-          <p>Siege social : [adresse]</p>
-          <p>SIRET : XXXXXXXXXX</p>
+        <div class="footer-nav">
+          <span class="footer-nav-title">Filiales</span>
+          <ul>
+            <li><a href="#filiales">Advisory</a></li>
+            <li><a href="#filiales">Security — Événementiel</a></li>
+            <li><a href="#filiales">Security — Site</a></li>
+            <li><a href="#filiales">Risk Management</a></li>
+          </ul>
         </div>
       </div>
-      <p class="copyright">© 2025 Blue Ward Group - Tous droits reserves - Societe de securite privee agreee CNAPS</p>
+      <div class="footer-bottom">
+        <p>© 2026 Blueward Group — Tous droits réservés</p>
+        <p class="cnaps">Blueward Group et ses filiales exercent dans le respect du Livre VI du Code de la sécurité intérieure, sous encadrement du CNAPS.</p>
+      </div>
     </div>
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
-  <script>
-  (function () {
-    const interventionPoints = [
-      { city: "Paris", country: "France", lat: 48.8566, lng: 2.3522, label: "Hub opérationnel Europe", missions: "400+" },
-      { city: "Londres", country: "Royaume-Uni", lat: 51.5074, lng: -0.1278, label: "Bureau Europe du Nord", missions: "80+" },
-      { city: "Genève", country: "Suisse", lat: 46.2044, lng: 6.1432, label: "Organisations internationales", missions: "60+" },
-      { city: "Monaco", country: "Monaco", lat: 43.7384, lng: 7.4246, label: "Clientèle UHNW", missions: "40+" },
-      { city: "Bruxelles", country: "Belgique", lat: 50.8503, lng: 4.3517, label: "Institutions UE / OTAN", missions: "50+" },
-      { city: "Rome", country: "Italie", lat: 41.9028, lng: 12.4964, label: "Délégations diplomatiques", missions: "30+" },
-      { city: "Madrid", country: "Espagne", lat: 40.4168, lng: -3.7038, label: "Opérations Ibérique", missions: "25+" },
-      { city: "Dubaï", country: "Émirats Arabes Unis", lat: 25.2048, lng: 55.2708, label: "Hub Golfe Persique", missions: "120+" },
-      { city: "Riyad", country: "Arabie Saoudite", lat: 24.7136, lng: 46.6753, label: "Missions gouvernementales", missions: "60+" },
-      { city: "Doha", country: "Qatar", lat: 25.2854, lng: 51.531, label: "Grands événements", missions: "40+" },
-      { city: "Abu Dhabi", country: "Émirats Arabes Unis", lat: 24.4539, lng: 54.3773, label: "Familles royales", missions: "35+" },
-      { city: "Beyrouth", country: "Liban", lat: 33.8938, lng: 35.5018, label: "Zone à risque élevé", missions: "20+" },
-      { city: "Abidjan", country: "Côte d'Ivoire", lat: 5.36, lng: -4.0083, label: "Afrique de l'Ouest", missions: "45+" },
-      { city: "Dakar", country: "Sénégal", lat: 14.6937, lng: -17.4441, label: "Délégations officielles", missions: "30+" },
-      { city: "Casablanca", country: "Maroc", lat: 33.5731, lng: -7.5898, label: "Hub Afrique du Nord", missions: "35+" },
-      { city: "Djibouti", country: "Djibouti", lat: 11.8251, lng: 42.5903, label: "Zone stratégique", missions: "15+" },
-      { city: "Nairobi", country: "Kenya", lat: -1.2921, lng: 36.8219, label: "Afrique de l'Est", missions: "20+" },
-      { city: "Tokyo", country: "Japon", lat: 35.6762, lng: 139.6503, label: "Délégations Asie", missions: "25+" },
-      { city: "Singapour", country: "Singapour", lat: 1.3521, lng: 103.8198, label: "Hub Asie du Sud-Est", missions: "20+" },
-      { city: "Hong Kong", country: "Hong Kong", lat: 22.3193, lng: 114.1694, label: "Missions Asie-Pacifique", missions: "15+" },
-      { city: "New York", country: "États-Unis", lat: 40.7128, lng: -74.006, label: "Bureau Amériques", missions: "50+" },
-      { city: "Washington D.C.", country: "États-Unis", lat: 38.9072, lng: -77.0369, label: "Institutions fédérales", missions: "30+" }
-    ];
-
-    async function initWorldMap() {
-      const mapEl = document.getElementById("world-map");
-      const tooltip = document.getElementById("map-tooltip");
-      const zoomIn = document.getElementById("zoom-in");
-      const zoomOut = document.getElementById("zoom-out");
-      const zoomReset = document.getElementById("zoom-reset");
-      if (!mapEl || typeof d3 === "undefined" || typeof topojson === "undefined") return;
-
-      let width = mapEl.clientWidth;
-      const height = mapEl.clientHeight || 520;
-      if (width < 80) width = Math.min(1400, window.innerWidth * 0.92);
-
-      const projection = d3.geoNaturalEarth1()
-        .scale(width / 5.85)
-        .translate([width / 2, height / 2]);
-
-      const path = d3.geoPath().projection(projection);
-
-      const svg = d3.select(mapEl)
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .attr("viewBox", [0, 0, width, height])
-        .attr("role", "presentation");
-
-      const g = svg.append("g");
-
-      g.append("rect")
-        .attr("class", "ocean-bg")
-        .attr("width", width)
-        .attr("height", height)
-        .attr("fill", "#0d1117")
-        .style("pointer-events", "none");
-
-      const zoom = d3.zoom()
-        .scaleExtent([1, 10])
-        .on("zoom", function (event) {
-          g.attr("transform", event.transform);
-        });
-
-      svg.call(zoom);
-      svg.on("dblclick.zoom", null);
-      svg.on("dblclick", function (event) {
-        event.preventDefault();
-        svg.transition().duration(400).call(zoom.transform, d3.zoomIdentity);
-      });
-
-      let world;
-      try {
-        world = await d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json");
-      } catch (e) {
-        mapEl.innerHTML = "<p style=\"color:#7a8494;padding:2rem;text-align:center;\">Carte indisponible (vérifiez la connexion).</p>";
-        return;
-      }
-
-      const countries = topojson.feature(world, world.objects.countries);
-
-      g.selectAll("path.country")
-        .data(countries.features)
-        .join("path")
-        .attr("class", "country")
-        .attr("d", path)
-        .on("click", function (event) {
-          event.stopPropagation();
-          g.selectAll(".country").classed("country--active", false);
-          d3.select(this).classed("country--active", true);
-        });
-
-      svg.on("click", function (event) {
-        const t = event.target;
-        if (t.classList && t.classList.contains("country")) return;
-        if (t.closest && t.closest(".intervention-point")) return;
-        g.selectAll(".country").classed("country--active", false);
-      });
-
-      interventionPoints.forEach(function (point, i) {
-        const coords = projection([point.lng, point.lat]);
-        if (coords == null || coords[0] == null || !isFinite(coords[0])) return;
-        const x = coords[0];
-        const y = coords[1];
-
-        const gPoint = g.append("g")
-          .attr("class", "intervention-point")
-          .attr("transform", "translate(" + x + "," + y + ")");
-
-        gPoint.append("circle")
-          .attr("class", "pulse")
-          .attr("r", 4)
-          .style("animation-delay", ((i % 4) * 0.6) + "s");
-
-        gPoint.append("circle")
-          .attr("class", "dot")
-          .attr("r", 4);
-
-        gPoint
-          .on("mouseenter", function () {
-            tooltip.querySelector(".tooltip-city").textContent =
-              point.city.toUpperCase() + " — " + point.country.toUpperCase();
-            tooltip.querySelector(".tooltip-label").textContent = point.label;
-            tooltip.querySelector(".tooltip-missions").textContent = "Interventions : " + point.missions;
-            tooltip.classList.add("visible");
-            tooltip.setAttribute("aria-hidden", "false");
-          })
-          .on("mousemove", function (event) {
-            const wrapper = document.querySelector(".map-wrapper");
-            if (!wrapper) return;
-            const rect = wrapper.getBoundingClientRect();
-            let tipX = event.clientX - rect.left + 14;
-            let tipY = event.clientY - rect.top - 10;
-            if (tipX + 240 > wrapper.clientWidth) tipX = event.clientX - rect.left - 240;
-            if (tipX < 8) tipX = 8;
-            if (tipY < 8) tipY = 8;
-            tooltip.style.left = tipX + "px";
-            tooltip.style.top = tipY + "px";
-          })
-          .on("mouseleave", function () {
-            tooltip.classList.remove("visible");
-            tooltip.setAttribute("aria-hidden", "true");
-          })
-          .on("click", function (event) {
-            event.stopPropagation();
-          });
-      });
-
-      function zoomBtn(fn) {
-        return function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          fn();
-        };
-      }
-      zoomIn.addEventListener("click", zoomBtn(function () {
-        svg.transition().duration(300).call(zoom.scaleBy, 1.5);
-      }));
-      zoomOut.addEventListener("click", zoomBtn(function () {
-        svg.transition().duration(300).call(zoom.scaleBy, 1 / 1.5);
-      }));
-      zoomReset.addEventListener("click", zoomBtn(function () {
-        svg.transition().duration(400).call(zoom.transform, d3.zoomIdentity);
-      }));
-    }
-
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", initWorldMap);
-    } else {
-      initWorldMap();
-    }
-  })();
-  </script>
-
-  <script>
-    const topbar = document.getElementById("topbar");
-    const burger = document.getElementById("burger");
-    const mobileMenu = document.getElementById("mobileMenu");
-
-    window.addEventListener("scroll", () => {
-      topbar.classList.toggle("scrolled", window.scrollY > 60);
-    });
-
-    burger.addEventListener("click", () => {
-      mobileMenu.classList.toggle("open");
-    });
-
-    document.querySelectorAll(".mobile-menu a, .desktop-links a, .cta, .btn").forEach((link) => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.remove("open");
-      });
-    });
-
-    const reveals = document.querySelectorAll(".reveal");
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.14 });
-    reveals.forEach((el) => revealObserver.observe(el));
-
-    const statValues = document.querySelectorAll(".stat-value");
-    const statsSection = document.getElementById("track");
-    let counted = false;
-
-    const animateCount = () => {
-      if (counted) return;
-      counted = true;
-      statValues.forEach((el) => {
-        if (el.dataset.display === "247") {
-          el.textContent = "24 / 7";
-          return;
-        }
-        const target = Number(el.dataset.count ?? "0");
-        const suffix = el.dataset.suffix ?? "";
-        if (target === 0 && suffix === "") {
-          el.textContent = "0";
-          return;
-        }
-        const duration = 1500;
-        const start = performance.now();
-        const step = (now) => {
-          const progress = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const value = Math.floor(target * eased);
-          el.textContent = value.toLocaleString("fr-FR") + suffix;
-          if (progress < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-      });
-    };
-
-    const statsObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animateCount();
-          statsObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-    statsObserver.observe(statsSection);
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
