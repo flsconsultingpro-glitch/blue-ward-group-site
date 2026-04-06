@@ -7,7 +7,7 @@
   <meta name="description" content="Blue Ward Group. Gestion des risques et protection globale. Analyse de la menace, déploiement opérationnel, France et international.">
   <meta property="og:title" content="Blue Ward Group">
   <meta property="og:description" content="Anticiper la menace. Protéger ce qui compte.">
-  <meta property="og:image" content="https://flsconsultingpro-glitch.github.io/blue-ward-group-site/assets/world-map-lines.svg">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1431274172761-fca41d870e5a?w=1400&q=85&auto=format&fit=crop&grayscale">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -164,53 +164,24 @@
       align-items: center;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(180deg, #0A0A0A 0%, #111318 100%);
+      background: #0d1117;
     }
-    .hero-map-layer {
+    /* Vue large sur Paris (panorama urbain), désaturée + overlay pour le contraste du texte */
+    .hero-photo {
       position: absolute;
       inset: 0;
-      background-color: #0D1117;
-      background-image: url("assets/world-map-lines.svg");
+      background-color: #0d1117;
+      background-image:
+        linear-gradient(
+          to bottom,
+          rgba(13, 17, 23, 0.78) 0%,
+          rgba(13, 17, 23, 0.42) 45%,
+          rgba(13, 17, 23, 0.94) 100%
+        ),
+        radial-gradient(ellipse 100% 80% at 50% 30%, rgba(13, 17, 23, 0.15) 0%, transparent 55%),
+        url("https://images.unsplash.com/photo-1431274172761-fca41d870e5a?w=2400&q=85&auto=format&fit=crop&grayscale");
       background-size: cover;
-      background-position: center;
-    }
-    .hero-map-layer::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 85% 70% at 50% 42%, rgba(13,17,23,0.28) 0%, rgba(13,17,23,0.9) 100%);
-    }
-    .hero-pulses {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-    }
-    .pulse-dot {
-      position: absolute;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--gold);
-      opacity: 0.5;
-      transform: translate(-50%, -50%);
-      animation: mapPulse 3.4s ease-in-out infinite;
-    }
-    .pulse-dot:nth-child(1) { left: 49%; top: 34%; }
-    .pulse-dot:nth-child(2) { left: 51%; top: 30%; animation-delay: 0.85s; }
-    .pulse-dot:nth-child(3) { left: 72%; top: 38%; animation-delay: 1.7s; }
-    .pulse-dot:nth-child(4) { left: 28%; top: 36%; animation-delay: 2.55s; }
-    @keyframes mapPulse {
-      0%, 100% {
-        opacity: 0.22;
-        box-shadow: 0 0 0 0 rgba(196, 146, 42, 0);
-        transform: translate(-50%, -50%) scale(1);
-      }
-      50% {
-        opacity: 0.95;
-        box-shadow: 0 0 22px 8px rgba(196, 146, 42, 0.12);
-        transform: translate(-50%, -50%) scale(1.2);
-      }
+      background-position: center 28%;
     }
     .hero-inner {
       margin-top: 76px;
@@ -549,13 +520,7 @@
   </aside>
 
   <section class="hero" id="hero">
-    <div class="hero-map-layer" aria-hidden="true"></div>
-    <div class="hero-pulses" aria-hidden="true">
-      <span class="pulse-dot"></span>
-      <span class="pulse-dot"></span>
-      <span class="pulse-dot"></span>
-      <span class="pulse-dot"></span>
-    </div>
+    <div class="hero-photo" aria-hidden="true"></div>
     <div class="container hero-inner">
       <p class="hero-kicker">GESTION DES RISQUES &amp; PROTECTION GLOBALE</p>
       <h1>Anticiper la menace.<br>Protéger ce qui compte.</h1>
